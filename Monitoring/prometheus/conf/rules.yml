@@ -1,0 +1,9 @@
+groups:
+  - name: example
+    rules:
+      - alert: InstanceDown
+        expr: up == 0
+        for: 1m
+        annotations:
+          summary: "Instance is down"
+          description: "The instance is not reachable"

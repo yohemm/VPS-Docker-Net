@@ -1,0 +1,17 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:2.21.4-alpine
+    restart: unless-stopped
+    container_name: portainer
+    # ports:
+    #   - 9000:9000
+    networks:
+      - monitoring
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/volumes:/var/lib/docker/volumes
+      - /:/host:ro
+
+networks:
+  monitoring:
+    external: true

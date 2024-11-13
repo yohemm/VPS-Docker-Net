@@ -1,0 +1,10 @@
+/Projets/
+/AI/
+/Images/
+
+/Gitea/data/
+/Mail/data
+/Monitoring/grafana/data
+/Monitoring/prometheus/data
+/Reverse-Proxy/data/certbot/*/
+/Reverse-Proxy/data/nginx/*/
