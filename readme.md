@@ -13,8 +13,11 @@
 -->
 ## 🌟 Project Status
 
-> **Current Status**: **🟢 Active Development**  
-> The project is under active development. New features, enhancements, and updates are currently being worked on, like Ollama with web interface and a better mail system.
+> **Current Status**: **🟢 Active Development**
+> 
+> The project is under active development. New features, enhancements, and updates are currently being worked on
+>
+> Future Features : Ollama with web interface and a better mail system.
 
 
 ## Overview
