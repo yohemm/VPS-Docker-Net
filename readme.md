@@ -1,6 +1,21 @@
 # VPS Networking
+<!-- ![Project Banner](path/to/banner/image)
 
-<!-- ![Project Banner](path/to/banner/image)  -->
+
+**Legend**:  
+- **🟢 Active Development**: Regular updates, features, and bug fixes.
+- **🟡 In Reflection**: Planning future directions or awaiting strategic decisions.
+- **🔵 Maintenance Mode**: Only bug fixes and minor tweaks.
+- **🟠 Paused**: Temporarily halted; may resume later.
+- **🔴 Discontinued**: Development and support have ceased.
+- **🟤 Archived**: Preserved for historical purposes, no further updates.
+- **⚪ In Beta**: Pre-release testing phase for gathering feedback.
+-->
+## 🌟 Project Status
+
+> **Current Status**: **🟢 Active Development**  
+> The project is under active development. New features, enhancements, and updates are currently being worked on, like Ollama with web interface and a better mail system.
+
 
 ## Overview
 
