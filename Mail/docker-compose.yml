@@ -12,14 +12,16 @@ services:
       # - DISABLE_ROUNDCUBE=TRUE # To disable Roundcube webmail.
 
     ports:
-      - 993:993
-      - 995:995
-      - 4190:4190
+      - 25:25 # SMTP
+      - 110:110 # POP3
+      - 143:143 # IMAP
+      - 465:465 # SMTPS
+      # - 565:565 # SMTPS
+      - 587:587 #MSA
+      - 993:993 # IMAPS
+      - 995:995 # POPS3
+      - 4190:4190 # Sieve
       # - 8080:8080
-      - 587:587
-      - 565:565
-      - 465:465
-      - 143:143
     volumes:
       - ./data/posteio:/data
       - ../Reverse-Proxy/data/certbot/acme-challenge/.well-known/:/opt/www/.well-known:ro
