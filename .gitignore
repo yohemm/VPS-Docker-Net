@@ -11,8 +11,6 @@
 /Pro/**/
 /Projets/Shop/**/
 /**/*data*/**
-/**/*data*/*
-/**/data/
 !/Reverse-Proxy/data/certbot/
 !/Reverse-Proxy/data/nginx/conf.d/
 /Reverse-Proxy/data/nginx/conf.d/**
