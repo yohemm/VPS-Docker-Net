@@ -1,0 +1,90 @@
+services:
+  grafana:
+    image: grafana/grafana-oss
+    # user: '472'
+    container_name: grafana
+    restart: unless-stopped
+    # ports:
+    # - 3300:3000
+    volumes:
+      - ./grafana/data:/var/lib/grafana
+      # - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - "/etc/localtime:/etc/localtime:ro"
+    networks:
+      - monitoring
+  prometheus:
+    restart: unless-stopped
+    user: "0"
+    environment:
+      - PUID=0
+      - PGID=0
+    image: prom/prometheus:main
+    container_name: prometheus
+    # ports:
+    # - 9090:9090
+    volumes:
+      - ./prometheus/conf/prometheus.yml:/etc/prometheus/prometheus.yml
+      # - ./prometheus/conf/rules.yml:/etc/prometheus/rules.yml
+      - ./prometheus/data:/prometheus
+      - "/etc/localtime:/etc/localtime:ro"
+    networks:
+      - monitoring
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+      - "--web.enable-lifecycle"
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    restart: unless-stopped
+    pid: host
+    # network_mode: host
+    # ports:
+    # - 9100:9100
+    networks:
+      - monitoring
+    command:
+      - "--path.rootfs=/rootfs"
+      - "--path.procfs=/host/proc"
+      - "--path.sysfs=/host/sys"
+      - "--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)"
+    volumes:
+      - "/:/rootfs:ro"
+      - "/proc:/host/proc:ro"
+      - "/sys:/host/sys:ro"
+  # alert-manager:
+  #   image: prom/alertmanager
+  #   volumes:
+  #     - "./prometheus/conf/alertmanager.yml:/conf/alertmanager.yml"
+  #   networks:
+  #     - monitoring
+  #   ports:
+  #     - 9093:9093
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    # ports:
+    #   - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    depends_on:
+      - redis
+    networks:
+      - monitoring
+  redis:
+    image: redis:latest
+    container_name: redis
+    # ports:
+    #   - 6379:6379
+    networks:
+      - monitoring
+networks:
+  monitoring:
+    external: true

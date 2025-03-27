@@ -1,0 +1,10 @@
+FROM alpine:3.20
+
+# RUN apk update
+RUN addgroup -S null && adduser -S null -G null
+RUN apk add -i --no-cache certbot && apk add -i --no-cache openssl
+RUN addgroup -S vps-adminer && adduser -S vps -G vps-adminer --uid 1051
+RUN mkdir /var/www/ && mkdir /var/www/certbot
+RUN touch /etc/crontabs/vps && chmod 775 /etc/crontabs/vps
+COPY --chmod=777 ./script/ /script/
+ENTRYPOINT [ "/bin/sh", "/script/docker-entrypoint.sh" ]

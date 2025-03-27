@@ -1,0 +1,81 @@
+version: "3"
+
+networks:
+  gitea:
+    external: true
+
+# volumes:
+#   postgres_gitea:
+
+services:
+  server:
+    image: gitea/gitea:1.22.3
+    container_name: gitea
+    environment:
+      - USER_UID=667
+      - USER_GID=667
+      - GITEA__database__DB_TYPE=postgres
+      - GITEA__database__HOST=db:5432
+      - GITEA__database__NAME=giteaDb
+      - GITEA__database__USER=gitea
+      - GITEA__database__PASSWD=giteaB1gP@ass
+    restart: always
+    networks:
+      - gitea
+    volumes:
+      - ./data/gitea:/data/gitea
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /home/git/.ssh:/data/git/.ssh
+    ports:
+      # - "3000:3000"
+      - "222:22"
+  db:
+    image: postgres:17-alpine3.20
+    restart: always
+    container_name: db_gitea
+    user: "70:70"
+    environment:
+      - POSTGRES_USER=gitea
+      - POSTGRES_PASSWORD=giteaB1gP@ass
+      - POSTGRES_DB=giteaDb
+    networks:
+      - gitea
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+  act-runner:
+    image: gitea/act_runner:nightly
+    restart: always
+    environment:
+      CONFIG_FILE: /config.yml
+      GITEA_INSTANCE_URL: http://server:3000/
+      GITEA_RUNNER_REGISTRATION_TOKEN: "kZn7CzD4gIDV47wcMQFW59hppAULTVX78U1n5Bom"
+      GITEA_RUNNER_NAME: "Gitea Runner"
+      # GITEA_RUNNER_LABELS: "${RUNNER_LABELS}"
+    # entrypoint: "act_runner generate-config > config.yaml"
+    depends_on:
+      - db
+      - server
+    volumes:
+      - ./data/act-runner/:/data
+      - ./config/act-runner/config.yml:/config.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - gitea
+
+  # registry:
+  #   restart: always
+  #   image: registry:2
+  #   ports:
+  #     - 5000:5000
+  #   environment:
+  #     - REGISTRY_HTTP_ADDR=0.0.0.0:5000
+  #     # REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
+  #     # REGISTRY_HTTP_TLS_KEY: /certs/domain.key
+  #     # REGISTRY_AUTH: htpasswd
+  #     # REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+  #     # REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+  #   volumes:
+  #     - ./registry:/var/lib/registry
+  # - /path/certs:/certs
+  # - /path/auth:/auth

@@ -1,0 +1,34 @@
+services:
+  posteio:
+    image: analogic/poste.io
+    hostname: mail.vaxelaire.fr
+    container_name: posteio
+    environment:
+      - TZ=Europe/Paris
+      - HTTPS=OFF
+      - HTTP_PORT=8080
+      # - DISABLE_CLAMAV=TRUE # To disable ClamAV, it is useful for low mem usage.
+      # - DISABLE_RSPAMD=TRUE # To disable Rspamd, it is useful for low mem usage.
+      # - DISABLE_ROUNDCUBE=TRUE # To disable Roundcube webmail.
+
+    ports:
+      - 25:25 # SMTP
+      - 110:110 # POP3
+      - 143:143 # IMAP
+      - 465:465 # SMTPS
+      # - 565:565 # SMTPS
+      - 587:587 #MSA
+      - 993:993 # IMAPS
+      - 995:995 # POPS3
+      - 4190:4190 # Sieve
+      # - 8080:8080
+    volumes:
+      - ./data/posteio:/data
+      - ../Reverse-Proxy/data/certbot/acme-challenge/.well-known/:/opt/www/.well-known:ro
+    networks:
+      - mail-out
+networks:
+  mail-out:
+    name: mail-out
+    driver: bridge
+    external: true

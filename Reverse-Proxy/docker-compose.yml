@@ -1,0 +1,125 @@
+version: "3.9"
+services:
+  nginx-proxy:
+    # build: .
+    image: nginx:1.27-alpine
+    restart: always
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    container_name: nginx-proxy
+    # command: [nginx-debug, "-g", "daemon off;"] # debug
+    command: [ "/usr/sbin/nginx", "-g", "daemon off;" ] # debug
+    volumes:
+      - ./logs/nginx:/var/log/nginx:rw
+      - ./data/nginx/conf.d/:/etc/nginx/conf.d/:ro
+      - ./data/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./data/certbot/letsencrypt:/etc/letsencrypt:rw
+      - ./data/certbot/acme-challenge:/var/www/certbot:rw
+      # - ./html:/var/www/html
+    ports:
+      - "80:80"
+      - "443:443"
+      - "27017:27017"
+    expose:
+      - 27017
+      - 80
+      - 443
+    # environment:
+    #   UID: 1000
+    #   GID: 1000
+    networks:
+      # - vps-public
+      - minepiece-out
+      - vdv-out
+      - monitoring
+      - gitea
+      - mail-out
+      - shop-out
+      - hackthebox-out
+      - portfolio-out
+      - n8n-out
+    # command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'"
+
+  certbot:
+    restart: always
+    # image: certbot/certbot:v2.11.0
+    build:
+      context: .
+      dockerfile: CertbotFile
+    container_name: certificator
+    # user: "1051:1051"
+    depends_on:
+      - nginx-proxy
+    volumes:
+      - ./data/certbot/letsencrypt:/etc/letsencrypt:rw
+      - ./data/certbot/acme-challenge:/var/www/certbot:rw
+      - ./data/certbot/config:/var/lib/letsencrypt:rw
+      - ./logs/certbot:/var/log/letsencrypt:rw
+    environment:
+      FORCE_TO_RENEW: 0
+      NB_DAYS_FOR_RENEW: 10
+      TIMER_HOURS_RENEW: 168
+      DOMAINS: MP MPA MPL MPPL VDV VDVA MAILV MAILG CLOUDV MNTG GITVAX MANAG SHPV HCKTBOX YHM VXL N8N
+      YHM: yohem.fr
+      YHM_SD: yohem.fr www.yohem.fr
+      VXL: vaxelaire.fr
+      VXL_SD: vaxelaire.fr yohem.vaxelaire.fr
+      MP: minepiece.fr
+      MP_SD: minepiece.fr www.minepiece.fr
+      # MP: minepiece.fr www.minepiece.fr
+      MPA: adminer.minepiece.fr
+      MPL: launcher.minepiece.fr
+      MPPL: plugins.minepiece.fr
+      VDV: gites-hautes-vosges.fr
+      VDV_SD: gites-hautes-vosges.fr www.gites-hautes-vosges.fr
+      MNTG: monitoring.vaxelaire.fr
+      MANAG: management.vaxelaire.fr
+      # VDV: gites-hautes-vosges.fr www.gites-hautes-vosges.fr
+      VDVA: adminer.gites-hautes-vosges.fr
+      MAILV: mail.vaxelaire.fr
+      MAILG: mail.gites-hautes-vosges.fr
+      GITVAX: git.vaxelaire.fr
+      SHPV: shop.vaxelaire.fr
+      HCKTBOX: hackthebox.vaxelaire.fr
+      N8N: n8n.vaxelaire.fr
+      # CLOUDV: cloud.vaxelaire.fr
+
+      # command: certonly -v --webroot --agree-tos --renew-by-default --preferred-challenges http-01 --email vaxelaire.yohem@gmail.com --webroot-path /tmp/letsencrypt -d minepiece.fr
+networks:
+  vdv-out:
+    name: vdv-out
+    driver: bridge
+    external: true
+  minepiece-out:
+    name: minepiece-out
+    external: true
+    driver: bridge
+  monitoring:
+    name: monitoring
+    external: true
+    driver: bridge
+  gitea:
+    name: gitea
+    external: true
+    driver: bridge
+  mail-out:
+    name: mail-out
+    external: true
+    driver: bridge
+  shop-out:
+    name: shop-out
+    external: true
+    driver: bridge
+  hackthebox-out:
+    name: hackthebox-out
+    external: true
+    driver: bridge
+  portfolio-out:
+    name: portfolio-out
+    external: true
+    driver: bridge
+  n8n-out:
+    name: n8n-out
+    external: true
+    driver: bridge
