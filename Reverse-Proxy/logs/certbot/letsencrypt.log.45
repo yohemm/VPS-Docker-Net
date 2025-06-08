@@ -1,0 +1,317 @@
+2025-05-25 14:38:01,904:DEBUG:certbot._internal.main:certbot version: 2.10.0
+2025-05-25 14:38:01,904:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2025-05-25 14:38:01,904:DEBUG:certbot._internal.main:Arguments: ['-v', '--webroot', '--agree-tos', '--renew-by-default', '--preferred-challenges', 'http-01', '--email', 'vaxelaire.yohem@gmail.com', '--webroot-path', '/var/www/certbot', '-d', 'mail.gites-hautes-vosges.fr', '-n']
+2025-05-25 14:38:01,904:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2025-05-25 14:38:01,964:DEBUG:certbot._internal.log:Root logging level set at 20
+2025-05-25 14:38:01,965:DEBUG:certbot._internal.plugins.selection:Requested authenticator webroot and installer None
+2025-05-25 14:38:01,966:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * webroot
+Description: Saves the necessary validation files to a .well-known/acme-challenge/ directory within the nominated webroot path. A seperate HTTP server must be running and serving files from the webroot path. HTTP challenge only (wildcards not supported).
+Interfaces: Authenticator, Plugin
+Entry point: EntryPoint(name='webroot', value='certbot._internal.plugins.webroot:Authenticator', group='certbot.plugins')
+Initialized: <certbot._internal.plugins.webroot.Authenticator object at 0x7fbd3904ee10>
+Prep: True
+2025-05-25 14:38:01,966:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot._internal.plugins.webroot.Authenticator object at 0x7fbd3904ee10> and installer None
+2025-05-25 14:38:01,966:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator webroot, Installer None
+2025-05-25 14:38:02,025:DEBUG:certbot._internal.main:Picked account: <Account(RegistrationResource(body=Registration(key=None, contact=(), agreement=None, status=None, terms_of_service_agreed=None, only_return_existing=None, external_account_binding=None), uri='https://acme-v02.api.letsencrypt.org/acme/acct/2243553505', new_authzr_uri=None, terms_of_service=None), b674a225a17192af95a621d2ec1bc036, Meta(creation_dt=datetime.datetime(2025, 2, 22, 10, 55, 38, tzinfo=<UTC>), creation_host='faa0276bdd8e', register_to_eff=None))>
+2025-05-25 14:38:02,026:DEBUG:acme.client:Sending GET request to https://acme-v02.api.letsencrypt.org/directory.
+2025-05-25 14:38:02,028:DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): acme-v02.api.letsencrypt.org:443
+2025-05-25 14:38:02,391:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "GET /directory HTTP/1.1" 200 1012
+2025-05-25 14:38:02,392:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 25 May 2025 14:38:02 GMT
+Content-Type: application/json
+Content-Length: 1012
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "_sGfkvRnYP0": "https://community.letsencrypt.org/t/adding-random-entries-to-the-directory/33417",
+  "keyChange": "https://acme-v02.api.letsencrypt.org/acme/key-change",
+  "meta": {
+    "caaIdentities": [
+      "letsencrypt.org"
+    ],
+    "profiles": {
+      "classic": "https://letsencrypt.org/docs/profiles#classic",
+      "shortlived": "https://letsencrypt.org/docs/profiles#shortlived (not yet generally available)",
+      "tlsserver": "https://letsencrypt.org/docs/profiles#tlsserver"
+    },
+    "termsOfService": "https://letsencrypt.org/documents/LE-SA-v1.5-February-24-2025.pdf",
+    "website": "https://letsencrypt.org"
+  },
+  "newAccount": "https://acme-v02.api.letsencrypt.org/acme/new-acct",
+  "newNonce": "https://acme-v02.api.letsencrypt.org/acme/new-nonce",
+  "newOrder": "https://acme-v02.api.letsencrypt.org/acme/new-order",
+  "renewalInfo": "https://acme-v02.api.letsencrypt.org/draft-ietf-acme-ari-03/renewalInfo",
+  "revokeCert": "https://acme-v02.api.letsencrypt.org/acme/revoke-cert"
+}
+2025-05-25 14:38:02,413:DEBUG:certbot._internal.renewal:Auto-renewal forced with --force-renewal...
+2025-05-25 14:38:02,413:DEBUG:certbot._internal.display.obj:Notifying user: Renewing an existing certificate for mail.gites-hautes-vosges.fr
+2025-05-25 14:38:02,414:DEBUG:acme.client:Requesting fresh nonce
+2025-05-25 14:38:02,414:DEBUG:acme.client:Sending HEAD request to https://acme-v02.api.letsencrypt.org/acme/new-nonce.
+2025-05-25 14:38:02,536:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "HEAD /acme/new-nonce HTTP/1.1" 200 0
+2025-05-25 14:38:02,536:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 25 May 2025 14:38:02 GMT
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: hsy8zaa5ANlDj56zV6lFzjG3-GM25u4mo0d_H_SiRaAwUW5UR_c
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+
+2025-05-25 14:38:02,536:DEBUG:acme.client:Storing nonce: hsy8zaa5ANlDj56zV6lFzjG3-GM25u4mo0d_H_SiRaAwUW5UR_c
+2025-05-25 14:38:02,537:DEBUG:acme.client:JWS payload:
+b'{\n  "identifiers": [\n    {\n      "type": "dns",\n      "value": "mail.gites-hautes-vosges.fr"\n    }\n  ]\n}'
+2025-05-25 14:38:02,539:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/new-order:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJoc3k4emFhNUFObERqNTZ6VjZsRnpqRzMtR00yNXU0bW8wZF9IX1NpUmFBd1VXNVVSX2MiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL25ldy1vcmRlciJ9",
+  "signature": "DJvrvT5F2wPz_by-gUK1RO05WqmiP3nydLLAn_R_7IMhiufbeFbRvPyYEKTGT8bIlT0vkxAzyPKOy37WBaqv9fJSEdivg6NTgZOq06LdbgPLlZ1kEq4t222xrKDLx9wz3uysVfIhS3cxkOnkj5X4Mh40PFy8FuIdbrQQa88l1Qm5Gb4R6ZckF9ONVAdc0jDoDyErSitxrMGzIhWTzrJ8nc-POpvKXjY3oANtrR1t2HKizHCaVYzkQZzaql7PZbrjn0j4RLn95ZohZeDzVis9VilINNzPFidlgSMlavPLb-WvGQq0fDxU1l8yNKFZb_dcbGxghFgKa07K1UdtLFRyHQ",
+  "payload": "ewogICJpZGVudGlmaWVycyI6IFsKICAgIHsKICAgICAgInR5cGUiOiAiZG5zIiwKICAgICAgInZhbHVlIjogIm1haWwuZ2l0ZXMtaGF1dGVzLXZvc2dlcy5mciIKICAgIH0KICBdCn0"
+}
+2025-05-25 14:38:02,812:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/new-order HTTP/1.1" 201 361
+2025-05-25 14:38:02,813:DEBUG:acme.client:Received response:
+HTTP 201
+Server: nginx
+Date: Sun, 25 May 2025 14:38:02 GMT
+Content-Type: application/json
+Content-Length: 361
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Location: https://acme-v02.api.letsencrypt.org/acme/order/2243553505/387664137067
+Replay-Nonce: YGn49jjbtNXABevEZupS_y_swqlRLqV1vGH6G7J8etpmov2HotI
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "status": "pending",
+  "expires": "2025-06-01T14:38:02Z",
+  "identifiers": [
+    {
+      "type": "dns",
+      "value": "mail.gites-hautes-vosges.fr"
+    }
+  ],
+  "authorizations": [
+    "https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/525687804237"
+  ],
+  "finalize": "https://acme-v02.api.letsencrypt.org/acme/finalize/2243553505/387664137067"
+}
+2025-05-25 14:38:02,813:DEBUG:acme.client:Storing nonce: YGn49jjbtNXABevEZupS_y_swqlRLqV1vGH6G7J8etpmov2HotI
+2025-05-25 14:38:02,814:DEBUG:acme.client:JWS payload:
+b''
+2025-05-25 14:38:02,815:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/525687804237:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJZR240OWpqYnROWEFCZXZFWnVwU195X3N3cWxSTHFWMXZHSDZHN0o4ZXRwbW92MkhvdEkiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LzIyNDM1NTM1MDUvNTI1Njg3ODA0MjM3In0",
+  "signature": "Z-IJXTkRATea5OXZROYrY-U6cHXNxRkOQuDOJlR8LLKx03DzoGmpdBFocWSEVcukMsoEIjuuXORcqIQ0FeWgc8olP7TcQcabeimqgJuS1M8mOgVSG1BSAA7afDnA2J8pn0X9ZmZegJ4g-HSyJUfGvHQ78320K625XzM_02UH93j994nJq-UOhMzVQDIbBS3F7gjvCzPbK7Y7q16B4i-pn4tin3bJlheaEadNqLlmKeFvYwEccRAjsvATFsDijp1F6ifyWeXH9e5yeTXyA5p70OjC-B3LiHZzQ_OWVqqvGvHuU9l9QCxcEYqzVUjVyNJl_Pl2c9oqaAsXNau3TpwLOg",
+  "payload": ""
+}
+2025-05-25 14:38:02,943:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz/2243553505/525687804237 HTTP/1.1" 200 835
+2025-05-25 14:38:02,944:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 25 May 2025 14:38:02 GMT
+Content-Type: application/json
+Content-Length: 835
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: hsy8zaa5Ml7LHBJ9jPfloKxXWqE2zS-CAKGlbd1RqgaWd2VuXuQ
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "mail.gites-hautes-vosges.fr"
+  },
+  "status": "pending",
+  "expires": "2025-06-01T14:38:02Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/525687804237/1ZqNBg",
+      "status": "pending",
+      "token": "xISLJDNeRnEGlD7ao6e43XT4raje_49_kGIfxrP5boc"
+    },
+    {
+      "type": "dns-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/525687804237/nH_6uw",
+      "status": "pending",
+      "token": "xISLJDNeRnEGlD7ao6e43XT4raje_49_kGIfxrP5boc"
+    },
+    {
+      "type": "tls-alpn-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/525687804237/6V-3aw",
+      "status": "pending",
+      "token": "xISLJDNeRnEGlD7ao6e43XT4raje_49_kGIfxrP5boc"
+    }
+  ]
+}
+2025-05-25 14:38:02,944:DEBUG:acme.client:Storing nonce: hsy8zaa5Ml7LHBJ9jPfloKxXWqE2zS-CAKGlbd1RqgaWd2VuXuQ
+2025-05-25 14:38:02,944:INFO:certbot._internal.auth_handler:Performing the following challenges:
+2025-05-25 14:38:02,944:INFO:certbot._internal.auth_handler:http-01 challenge for mail.gites-hautes-vosges.fr
+2025-05-25 14:38:02,945:INFO:certbot._internal.plugins.webroot:Using the webroot path /var/www/certbot for all unmatched domains.
+2025-05-25 14:38:02,945:DEBUG:certbot._internal.plugins.webroot:Creating root challenges validation dir at /var/www/certbot/.well-known/acme-challenge
+2025-05-25 14:38:02,946:DEBUG:certbot._internal.plugins.webroot:Attempting to save validation to /var/www/certbot/.well-known/acme-challenge/xISLJDNeRnEGlD7ao6e43XT4raje_49_kGIfxrP5boc
+2025-05-25 14:38:02,947:DEBUG:acme.client:JWS payload:
+b'{}'
+2025-05-25 14:38:02,948:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/525687804237/1ZqNBg:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJoc3k4emFhNU1sN0xIQko5alBmbG9LeFhXcUUyelMtQ0FLR2xiZDFScWdhV2QyVnVYdVEiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2NoYWxsLzIyNDM1NTM1MDUvNTI1Njg3ODA0MjM3LzFacU5CZyJ9",
+  "signature": "jvYB2Nob-nPD0H-T8cDpMTVZJUXh1vLwuy0c-U8OEiiKfZWJ1TMUpCwXsu6IAJ4Xgmkh7Ws845ZOvNLNEsQ4gA97Hlup-9UOSoiv7zwZoAUb-Rp3Bs_75HyNoGW_GvN9jD7KqBi1rPGCz5V0iJ3oVqN3FCkETJ6T8oAqnYvcwYKZQgxRf3Zvc_SS8tQe9n4pkIt3ZuoSf9CZ9o8poyuGvb9aCBeKiFZCzWE_NVLWpWSJYXVoYY66-ayRzuQTegkPwSPj3pmJq1mkp2_FQW2OdqaJ2w5_l2OXtQtm3UOg7vswArEKu98uQS0C5ORGZCZ6DBc3GCwDUTnJrC_PTcY74A",
+  "payload": "e30"
+}
+2025-05-25 14:38:03,076:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/chall/2243553505/525687804237/1ZqNBg HTTP/1.1" 200 195
+2025-05-25 14:38:03,077:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 25 May 2025 14:38:03 GMT
+Content-Type: application/json
+Content-Length: 195
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index", <https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/525687804237>;rel="up"
+Location: https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/525687804237/1ZqNBg
+Replay-Nonce: hsy8zaa57_3_DD0ILN8L5A2QqWa2_5w2-SdgQMWM-fLfR0DHgIQ
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "type": "http-01",
+  "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/525687804237/1ZqNBg",
+  "status": "pending",
+  "token": "xISLJDNeRnEGlD7ao6e43XT4raje_49_kGIfxrP5boc"
+}
+2025-05-25 14:38:03,077:DEBUG:acme.client:Storing nonce: hsy8zaa57_3_DD0ILN8L5A2QqWa2_5w2-SdgQMWM-fLfR0DHgIQ
+2025-05-25 14:38:03,078:INFO:certbot._internal.auth_handler:Waiting for verification...
+2025-05-25 14:38:04,078:DEBUG:acme.client:JWS payload:
+b''
+2025-05-25 14:38:04,079:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/525687804237:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJoc3k4emFhNTdfM19ERDBJTE44TDVBMlFxV2EyXzV3Mi1TZGdRTVdNLWZMZlIwREhnSVEiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LzIyNDM1NTM1MDUvNTI1Njg3ODA0MjM3In0",
+  "signature": "HBX1tV4lj5SaoaiRI44ESXFcUKsyZWQ_p8018vjAB7ksz9KGLijbvbwPjcVUrly7f5ww6pzBMkhM2NRgqWtjg5ljqbx5YPH-O6n24SBgoF0VdlJdH7Kx7yXM6IguonprFjToBviIxC_5TrEzA38W6soY2wQKanADyAysizzewrkdKrEIuk_1lUlTY263jso4xhchOdnerNTruA344vuF6jQQLwnrtdOiVSYb8s-UNZ28RS-6eaZYZvHa-Mpnp-fnai1Jve7LS_w5PeT1V4rr3kz2_xOwf9cbuk7J0uu_QgGOaFNtlk-foUgmNXvg8sa0h3-d0wYS8ALHhK7biUiyUQ",
+  "payload": ""
+}
+2025-05-25 14:38:04,207:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz/2243553505/525687804237 HTTP/1.1" 200 1513
+2025-05-25 14:38:04,208:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 25 May 2025 14:38:04 GMT
+Content-Type: application/json
+Content-Length: 1513
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: hsy8zaa5FdV-PVhgNKx18FSIaQSzAorFmZpDbANgeJtuCmSoAIk
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "mail.gites-hautes-vosges.fr"
+  },
+  "status": "invalid",
+  "expires": "2025-06-01T14:38:02Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/525687804237/1ZqNBg",
+      "status": "invalid",
+      "validated": "2025-05-25T14:38:03Z",
+      "error": {
+        "type": "urn:ietf:params:acme:error:connection",
+        "detail": "91.108.113.88: Fetching http://mail.gites-hautes-vosges.fr/.well-known/acme-challenge/xISLJDNeRnEGlD7ao6e43XT4raje_49_kGIfxrP5boc: Error getting validation data",
+        "status": 400
+      },
+      "token": "xISLJDNeRnEGlD7ao6e43XT4raje_49_kGIfxrP5boc",
+      "validationRecord": [
+        {
+          "url": "http://mail.gites-hautes-vosges.fr/.well-known/acme-challenge/xISLJDNeRnEGlD7ao6e43XT4raje_49_kGIfxrP5boc",
+          "hostname": "mail.gites-hautes-vosges.fr",
+          "port": "80",
+          "addressesResolved": [
+            "91.108.113.88",
+            "2a02:4780:28:d15a::1"
+          ],
+          "addressUsed": "2a02:4780:28:d15a::1"
+        },
+        {
+          "url": "http://mail.gites-hautes-vosges.fr/.well-known/acme-challenge/xISLJDNeRnEGlD7ao6e43XT4raje_49_kGIfxrP5boc",
+          "hostname": "mail.gites-hautes-vosges.fr",
+          "port": "80",
+          "addressesResolved": [
+            "91.108.113.88",
+            "2a02:4780:28:d15a::1"
+          ],
+          "addressUsed": "91.108.113.88"
+        }
+      ]
+    }
+  ]
+}
+2025-05-25 14:38:04,208:DEBUG:acme.client:Storing nonce: hsy8zaa5FdV-PVhgNKx18FSIaQSzAorFmZpDbANgeJtuCmSoAIk
+2025-05-25 14:38:04,208:INFO:certbot._internal.auth_handler:Challenge failed for domain mail.gites-hautes-vosges.fr
+2025-05-25 14:38:04,208:INFO:certbot._internal.auth_handler:http-01 challenge for mail.gites-hautes-vosges.fr
+2025-05-25 14:38:04,208:DEBUG:certbot._internal.display.obj:Notifying user: 
+Certbot failed to authenticate some domains (authenticator: webroot). The Certificate Authority reported these problems:
+  Domain: mail.gites-hautes-vosges.fr
+  Type:   connection
+  Detail: 91.108.113.88: Fetching http://mail.gites-hautes-vosges.fr/.well-known/acme-challenge/xISLJDNeRnEGlD7ao6e43XT4raje_49_kGIfxrP5boc: Error getting validation data
+
+Hint: The Certificate Authority failed to download the temporary challenge files created by Certbot. Ensure that the listed domains serve their content from the provided --webroot-path/-w and that files created there can be downloaded from the internet.
+
+2025-05-25 14:38:04,210:DEBUG:certbot._internal.error_handler:Encountered exception:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/site-packages/certbot/_internal/auth_handler.py", line 108, in handle_authorizations
+    self._poll_authorizations(authzrs, max_retries, max_time_mins, best_effort)
+  File "/usr/lib/python3.12/site-packages/certbot/_internal/auth_handler.py", line 212, in _poll_authorizations
+    raise errors.AuthorizationError('Some challenges have failed.')
+certbot.errors.AuthorizationError: Some challenges have failed.
+
+2025-05-25 14:38:04,210:DEBUG:certbot._internal.error_handler:Calling registered functions
+2025-05-25 14:38:04,210:INFO:certbot._internal.auth_handler:Cleaning up challenges
+2025-05-25 14:38:04,210:DEBUG:certbot._internal.plugins.webroot:Removing /var/www/certbot/.well-known/acme-challenge/xISLJDNeRnEGlD7ao6e43XT4raje_49_kGIfxrP5boc
+2025-05-25 14:38:04,210:DEBUG:certbot._internal.plugins.webroot:All challenges cleaned up
+2025-05-25 14:38:04,210:DEBUG:certbot._internal.log:Exiting abnormally:
+Traceback (most recent call last):
+  File "/usr/bin/certbot", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/usr/lib/python3.12/site-packages/certbot/main.py", line 19, in main
+    return internal_main.main(cli_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/certbot/_internal/main.py", line 1894, in main
+    return config.func(config, plugins)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/certbot/_internal/main.py", line 1600, in certonly
+    lineage = _get_and_save_cert(le_client, config, domains, certname, lineage)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/certbot/_internal/main.py", line 131, in _get_and_save_cert
+    renewal.renew_cert(config, domains, le_client, lineage)
+  File "/usr/lib/python3.12/site-packages/certbot/_internal/renewal.py", line 399, in renew_cert
+    new_cert, new_chain, new_key, _ = le_client.obtain_certificate(domains, new_key)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/certbot/_internal/client.py", line 428, in obtain_certificate
+    orderr = self._get_order_and_authorizations(csr.data, self.config.allow_subset_of_names)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/certbot/_internal/client.py", line 496, in _get_order_and_authorizations
+    authzr = self.auth_handler.handle_authorizations(orderr, self.config, best_effort)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/certbot/_internal/auth_handler.py", line 108, in handle_authorizations
+    self._poll_authorizations(authzrs, max_retries, max_time_mins, best_effort)
+  File "/usr/lib/python3.12/site-packages/certbot/_internal/auth_handler.py", line 212, in _poll_authorizations
+    raise errors.AuthorizationError('Some challenges have failed.')
+certbot.errors.AuthorizationError: Some challenges have failed.
+2025-05-25 14:38:04,213:ERROR:certbot._internal.log:Some challenges have failed.

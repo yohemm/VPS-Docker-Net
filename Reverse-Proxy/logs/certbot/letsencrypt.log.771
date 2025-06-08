@@ -1,0 +1,346 @@
+2025-02-22 14:35:37,227:DEBUG:certbot._internal.main:certbot version: 2.10.0
+2025-02-22 14:35:37,227:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2025-02-22 14:35:37,228:DEBUG:certbot._internal.main:Arguments: ['-v', '--webroot', '--agree-tos', '--renew-by-default', '--preferred-challenges', 'http-01', '--email', 'vaxelaire.yohem@gmail.com', '--webroot-path', '/var/www/certbot', '-d', 'management.vaxelaire.fr', '-n']
+2025-02-22 14:35:37,228:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2025-02-22 14:35:37,251:DEBUG:certbot._internal.log:Root logging level set at 20
+2025-02-22 14:35:37,251:DEBUG:certbot._internal.plugins.selection:Requested authenticator webroot and installer None
+2025-02-22 14:35:37,252:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * webroot
+Description: Saves the necessary validation files to a .well-known/acme-challenge/ directory within the nominated webroot path. A seperate HTTP server must be running and serving files from the webroot path. HTTP challenge only (wildcards not supported).
+Interfaces: Authenticator, Plugin
+Entry point: EntryPoint(name='webroot', value='certbot._internal.plugins.webroot:Authenticator', group='certbot.plugins')
+Initialized: <certbot._internal.plugins.webroot.Authenticator object at 0x7f837e57cbc0>
+Prep: True
+2025-02-22 14:35:37,252:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot._internal.plugins.webroot.Authenticator object at 0x7f837e57cbc0> and installer None
+2025-02-22 14:35:37,252:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator webroot, Installer None
+2025-02-22 14:35:37,300:DEBUG:certbot._internal.main:Picked account: <Account(RegistrationResource(body=Registration(key=None, contact=(), agreement=None, status=None, terms_of_service_agreed=None, only_return_existing=None, external_account_binding=None), uri='https://acme-v02.api.letsencrypt.org/acme/acct/2243553505', new_authzr_uri=None, terms_of_service=None), b674a225a17192af95a621d2ec1bc036, Meta(creation_dt=datetime.datetime(2025, 2, 22, 10, 55, 38, tzinfo=<UTC>), creation_host='faa0276bdd8e', register_to_eff=None))>
+2025-02-22 14:35:37,301:DEBUG:acme.client:Sending GET request to https://acme-v02.api.letsencrypt.org/directory.
+2025-02-22 14:35:37,303:DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): acme-v02.api.letsencrypt.org:443
+2025-02-22 14:35:37,696:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "GET /directory HTTP/1.1" 200 1038
+2025-02-22 14:35:37,697:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sat, 22 Feb 2025 14:35:37 GMT
+Content-Type: application/json
+Content-Length: 1038
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "keyChange": "https://acme-v02.api.letsencrypt.org/acme/key-change",
+  "meta": {
+    "caaIdentities": [
+      "letsencrypt.org"
+    ],
+    "profiles": {
+      "classic": "https://letsencrypt.org/docs/profiles#classic",
+      "shortlived": "https://letsencrypt.org/docs/profiles#shortlived (not yet generally available)",
+      "tlsserver": "https://letsencrypt.org/docs/profiles#tlsserver (not yet generally available)"
+    },
+    "termsOfService": "https://letsencrypt.org/documents/LE-SA-v1.4-April-3-2024.pdf",
+    "website": "https://letsencrypt.org"
+  },
+  "newAccount": "https://acme-v02.api.letsencrypt.org/acme/new-acct",
+  "newNonce": "https://acme-v02.api.letsencrypt.org/acme/new-nonce",
+  "newOrder": "https://acme-v02.api.letsencrypt.org/acme/new-order",
+  "renewalInfo": "https://acme-v02.api.letsencrypt.org/draft-ietf-acme-ari-03/renewalInfo",
+  "revokeCert": "https://acme-v02.api.letsencrypt.org/acme/revoke-cert",
+  "y0TbbWybdE8": "https://community.letsencrypt.org/t/adding-random-entries-to-the-directory/33417"
+}
+2025-02-22 14:35:37,719:DEBUG:certbot._internal.renewal:Auto-renewal forced with --force-renewal...
+2025-02-22 14:35:37,719:DEBUG:certbot._internal.display.obj:Notifying user: Renewing an existing certificate for management.vaxelaire.fr
+2025-02-22 14:35:37,720:DEBUG:acme.client:Requesting fresh nonce
+2025-02-22 14:35:37,720:DEBUG:acme.client:Sending HEAD request to https://acme-v02.api.letsencrypt.org/acme/new-nonce.
+2025-02-22 14:35:37,851:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "HEAD /acme/new-nonce HTTP/1.1" 200 0
+2025-02-22 14:35:37,852:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sat, 22 Feb 2025 14:35:37 GMT
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: bmVxADwsD5O0vukxEV4UZ8MvMPxP9KsUmxcO8xekG1tfGj1Fnbs
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+
+2025-02-22 14:35:37,852:DEBUG:acme.client:Storing nonce: bmVxADwsD5O0vukxEV4UZ8MvMPxP9KsUmxcO8xekG1tfGj1Fnbs
+2025-02-22 14:35:37,852:DEBUG:acme.client:JWS payload:
+b'{\n  "identifiers": [\n    {\n      "type": "dns",\n      "value": "management.vaxelaire.fr"\n    }\n  ]\n}'
+2025-02-22 14:35:37,854:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/new-order:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJibVZ4QUR3c0Q1TzB2dWt4RVY0VVo4TXZNUHhQOUtzVW14Y084eGVrRzF0ZkdqMUZuYnMiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL25ldy1vcmRlciJ9",
+  "signature": "IK64VrT2OIcgej33ZsJu-DJQnxLNc0cQ8RrzAmyWl-smglLTIUQOrg8ttclaEJ10PSpQcSWcGX_vsmsDZ7dnGh2r4sR-2bZk6oOhzea_2a41fEJxpqsgyEHlDHs2JdBoE6rOS5EH90cSD1Mdhpg0pWBHyGG5gI6GDd_ZPqmP2NJ1EGQseZvdMotyTLG9mItJC_5CUKN54fQ9mMhhqotzJ5CkRoKFEavPIvfxL1T6A2TZN66vMHO5cL9AuYl9z0dOCZCVCMQBk2dOpzUSFwHQgi5S8zhxnZZIjzUNm0deFDMziGKjjbXQDm4PO7FsPDvALE4yQZNtvnGZbZT8XLgJxA",
+  "payload": "ewogICJpZGVudGlmaWVycyI6IFsKICAgIHsKICAgICAgInR5cGUiOiAiZG5zIiwKICAgICAgInZhbHVlIjogIm1hbmFnZW1lbnQudmF4ZWxhaXJlLmZyIgogICAgfQogIF0KfQ"
+}
+2025-02-22 14:35:38,019:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/new-order HTTP/1.1" 201 355
+2025-02-22 14:35:38,019:DEBUG:acme.client:Received response:
+HTTP 201
+Server: nginx
+Date: Sat, 22 Feb 2025 14:35:37 GMT
+Content-Type: application/json
+Content-Length: 355
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Location: https://acme-v02.api.letsencrypt.org/acme/order/2243553505/356951366505
+Replay-Nonce: nCc9NVNmpB3nUWbv24EOZ2zlMFHr7z3xSrzHyzheXig18BUxKkY
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "status": "ready",
+  "expires": "2025-03-01T14:35:37Z",
+  "identifiers": [
+    {
+      "type": "dns",
+      "value": "management.vaxelaire.fr"
+    }
+  ],
+  "authorizations": [
+    "https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/479801857745"
+  ],
+  "finalize": "https://acme-v02.api.letsencrypt.org/acme/finalize/2243553505/356951366505"
+}
+2025-02-22 14:35:38,019:DEBUG:acme.client:Storing nonce: nCc9NVNmpB3nUWbv24EOZ2zlMFHr7z3xSrzHyzheXig18BUxKkY
+2025-02-22 14:35:38,020:DEBUG:acme.client:JWS payload:
+b''
+2025-02-22 14:35:38,022:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/479801857745:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJuQ2M5TlZObXBCM25VV2J2MjRFT1oyemxNRkhyN3ozeFNyekh5emhlWGlnMThCVXhLa1kiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LzIyNDM1NTM1MDUvNDc5ODAxODU3NzQ1In0",
+  "signature": "KwcDB2jH0zfEkQGtITVmNdOsJF0egIlc1LlY0BkmaGyu2aMw2JeFie-RXvCB-xxnpweEI8DwLYyKpPFGSW3fTg97jTpbm3BkAX9SIDtMy7z_MHnPih4qSWyKqz9CfcbHQM41GD5TL4qA3MGdpeGfPPFV-LnB0NuaiTrkNb9U_y4az7GFEfaEMYhDqhb_Jd8shPYB4-3IFxyp0xoqS6K548SKEP4gQu-otk3OyF15Efu90peIiVkoSWciSesui0OzW9fyR1K6JT0t2HxqDIKU7p3JeZWm7bjzY21hzKJTfiEwJ1g7phyxXhSiodbCntROJfbksO4bHkKEQdjCUzcS6g",
+  "payload": ""
+}
+2025-02-22 14:35:38,158:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz/2243553505/479801857745 HTTP/1.1" 200 1202
+2025-02-22 14:35:38,158:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sat, 22 Feb 2025 14:35:38 GMT
+Content-Type: application/json
+Content-Length: 1202
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: bmVxADws4rC1yvNnx0Av0BQiSd5RRP6BF8R3EeXiihMWWFqkj0A
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "management.vaxelaire.fr"
+  },
+  "status": "valid",
+  "expires": "2025-03-24T11:16:26Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/479801857745/8gU2uw",
+      "status": "valid",
+      "validated": "2025-02-22T11:16:24Z",
+      "token": "u3661yQb7Pi1sF4nCpRL38G2bqoTnyG_Gn9PjAe8v1Y",
+      "validationRecord": [
+        {
+          "url": "http://management.vaxelaire.fr/.well-known/acme-challenge/u3661yQb7Pi1sF4nCpRL38G2bqoTnyG_Gn9PjAe8v1Y",
+          "hostname": "management.vaxelaire.fr",
+          "port": "80",
+          "addressesResolved": [
+            "91.108.113.88",
+            "2a02:4780:28:d15a::1"
+          ],
+          "addressUsed": "2a02:4780:28:d15a::1"
+        },
+        {
+          "url": "http://management.vaxelaire.fr/.well-known/acme-challenge/u3661yQb7Pi1sF4nCpRL38G2bqoTnyG_Gn9PjAe8v1Y",
+          "hostname": "management.vaxelaire.fr",
+          "port": "80",
+          "addressesResolved": [
+            "91.108.113.88",
+            "2a02:4780:28:d15a::1"
+          ],
+          "addressUsed": "91.108.113.88"
+        }
+      ]
+    }
+  ]
+}
+2025-02-22 14:35:38,158:DEBUG:acme.client:Storing nonce: bmVxADws4rC1yvNnx0Av0BQiSd5RRP6BF8R3EeXiihMWWFqkj0A
+2025-02-22 14:35:38,159:DEBUG:certbot._internal.client:CSR: CSR(file=None, data=b'-----BEGIN CERTIFICATE REQUEST-----\nMIHwMIGXAgEAMAAwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATqsVMMiHwJsEcD\nsm2ON6NvZLWSWjSDC/PYSG336ISYdzX8AkQlCP3c5PFWaxD5eR5mPFsphriJNtAB\nzK8yGFTUoDUwMwYJKoZIhvcNAQkOMSYwJDAiBgNVHREEGzAZghdtYW5hZ2VtZW50\nLnZheGVsYWlyZS5mcjAKBggqhkjOPQQDAgNIADBFAiEA8RT5ABtA6S1wD2qEYom7\nup1RiyzMaY1vnP+r72mmW7YCICnr7JzJdZDf0IcvpXy6RqlJpfngCRkBqb6XoQZ7\nwbbk\n-----END CERTIFICATE REQUEST-----\n', form='pem')
+2025-02-22 14:35:38,159:DEBUG:certbot._internal.client:Will poll for certificate issuance until 2025-02-22 14:37:08.159874
+2025-02-22 14:35:38,160:DEBUG:acme.client:JWS payload:
+b'{\n  "csr": "MIHwMIGXAgEAMAAwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATqsVMMiHwJsEcDsm2ON6NvZLWSWjSDC_PYSG336ISYdzX8AkQlCP3c5PFWaxD5eR5mPFsphriJNtABzK8yGFTUoDUwMwYJKoZIhvcNAQkOMSYwJDAiBgNVHREEGzAZghdtYW5hZ2VtZW50LnZheGVsYWlyZS5mcjAKBggqhkjOPQQDAgNIADBFAiEA8RT5ABtA6S1wD2qEYom7up1RiyzMaY1vnP-r72mmW7YCICnr7JzJdZDf0IcvpXy6RqlJpfngCRkBqb6XoQZ7wbbk"\n}'
+2025-02-22 14:35:38,162:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/finalize/2243553505/356951366505:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJibVZ4QUR3czRyQzF5dk5ueDBBdjBCUWlTZDVSUlA2QkY4UjNFZVhpaWhNV1dGcWtqMEEiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2ZpbmFsaXplLzIyNDM1NTM1MDUvMzU2OTUxMzY2NTA1In0",
+  "signature": "cCJIfpv7GTko6XF_cV4mWb-NqTDVYdfHOSIhB5VvVMhZIj16cLYKcs0qA-xVlEsw7U2orMcwwjZj4zLZWbcxgeAiYnGLlHc9FBz7edgINHYUiRO1gFhrWC28X32BG5JGkEI5Z8Q1LyQyUL8fkpeWghL27RcRrl-CT9q4QayHdPeZid-Rm3-norIb0p6VTOuX0u05RBEE0C7aIpmZnTfPz6uzVtXzaTEQOAZdACt6LRgqLlVPP0jFJWVnEiNtho5b0GzELQ9G0Xtojhbqb6e9_1rMciTJVgfjjRFTs6xI1k4RBYkeKkPEhvcTeCFJeivdt5Upw0j5v-5IByEuaksyMA",
+  "payload": "ewogICJjc3IiOiAiTUlId01JR1hBZ0VBTUFBd1dUQVRCZ2NxaGtqT1BRSUJCZ2dxaGtqT1BRTUJCd05DQUFUcXNWTU1pSHdKc0VjRHNtMk9ONk52WkxXU1dqU0RDX1BZU0czMzZJU1lkelg4QWtRbENQM2M1UEZXYXhENWVSNW1QRnNwaHJpSk50QUJ6Szh5R0ZUVW9EVXdNd1lKS29aSWh2Y05BUWtPTVNZd0pEQWlCZ05WSFJFRUd6QVpnaGR0WVc1aFoyVnRaVzUwTG5aaGVHVnNZV2x5WlM1bWNqQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUE4UlQ1QUJ0QTZTMXdEMnFFWW9tN3VwMVJpeXpNYVkxdm5QLXI3Mm1tVzdZQ0lDbnI3SnpKZFpEZjBJY3ZwWHk2UnFsSnBmbmdDUmtCcWI2WG9RWjd3YmJrIgp9"
+}
+2025-02-22 14:35:38,592:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/finalize/2243553505/356951366505 HTTP/1.1" 200 459
+2025-02-22 14:35:38,593:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sat, 22 Feb 2025 14:35:38 GMT
+Content-Type: application/json
+Content-Length: 459
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Location: https://acme-v02.api.letsencrypt.org/acme/order/2243553505/356951366505
+Replay-Nonce: nCc9NVNmoxtWqC8h4-uH0asfKHohEcmGYHKm7hUOAS7SRoNz7s4
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "status": "valid",
+  "expires": "2025-03-01T14:35:37Z",
+  "identifiers": [
+    {
+      "type": "dns",
+      "value": "management.vaxelaire.fr"
+    }
+  ],
+  "authorizations": [
+    "https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/479801857745"
+  ],
+  "finalize": "https://acme-v02.api.letsencrypt.org/acme/finalize/2243553505/356951366505",
+  "certificate": "https://acme-v02.api.letsencrypt.org/acme/cert/033be679e6aba6e37f909213dd189d2c0fc0"
+}
+2025-02-22 14:35:38,593:DEBUG:acme.client:Storing nonce: nCc9NVNmoxtWqC8h4-uH0asfKHohEcmGYHKm7hUOAS7SRoNz7s4
+2025-02-22 14:35:39,593:DEBUG:acme.client:JWS payload:
+b''
+2025-02-22 14:35:39,595:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/order/2243553505/356951366505:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJuQ2M5TlZObW94dFdxQzhoNC11SDBhc2ZLSG9oRWNtR1lIS203aFVPQVM3U1JvTno3czQiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL29yZGVyLzIyNDM1NTM1MDUvMzU2OTUxMzY2NTA1In0",
+  "signature": "SK5bZ2EjP7AZi6PV5kI4Ttbnd7coSxNICFAEbrGS6Z0CUa0PjQiaG6SK1UqFVBpWZEUcicAotoTicucL4emQZ4nFQ6-_em7kFaErAfnWIWatDlDH6SoI4IkRQlJOYeK5a6RQahjIizTOkDHwJxKS5qhekviTgnxaKD-F8WBVxkWT-IWQjj-RuHtv-z8-Rqq61c582h7ol66T4JNcYVuf2P5OxurSAS1kEicwbrzgFlwU6CxPs57nYmONKxX-nBjOOX3MEFM9EIHJLUARHttmaMyA2dUlROsoNG5zp_LyT8nq1utW7VVKXDyohqIWoC7rO2H5C6xqaMwjQDeD1yV_Gg",
+  "payload": ""
+}
+2025-02-22 14:35:39,731:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/order/2243553505/356951366505 HTTP/1.1" 200 459
+2025-02-22 14:35:39,732:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sat, 22 Feb 2025 14:35:39 GMT
+Content-Type: application/json
+Content-Length: 459
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: nCc9NVNmvmLJJiC_EBKsunGhLcKv1YhYk42mTMe-t97XxMMvFck
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "status": "valid",
+  "expires": "2025-03-01T14:35:37Z",
+  "identifiers": [
+    {
+      "type": "dns",
+      "value": "management.vaxelaire.fr"
+    }
+  ],
+  "authorizations": [
+    "https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/479801857745"
+  ],
+  "finalize": "https://acme-v02.api.letsencrypt.org/acme/finalize/2243553505/356951366505",
+  "certificate": "https://acme-v02.api.letsencrypt.org/acme/cert/033be679e6aba6e37f909213dd189d2c0fc0"
+}
+2025-02-22 14:35:39,732:DEBUG:acme.client:Storing nonce: nCc9NVNmvmLJJiC_EBKsunGhLcKv1YhYk42mTMe-t97XxMMvFck
+2025-02-22 14:35:39,732:DEBUG:acme.client:JWS payload:
+b''
+2025-02-22 14:35:39,734:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/cert/033be679e6aba6e37f909213dd189d2c0fc0:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJuQ2M5TlZObXZtTEpKaUNfRUJLc3VuR2hMY0t2MVloWWs0Mm1UTWUtdDk3WHhNTXZGY2siLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2NlcnQvMDMzYmU2NzllNmFiYTZlMzdmOTA5MjEzZGQxODlkMmMwZmMwIn0",
+  "signature": "FqOkOi9yPCwpDXM0IDr7cahvSfLFkp-9192Ft-TxzuuXHX4ROcRcfsxrsXNRUb7LPDq4vzE-fvmfuzdNhjb-dEQmHeTSg9fSpC1DikNmomTL3C0DsNeSifvaEe5lo7Iz-6Ee5zgXuGCN9ra5fF9hY9ygGNRmkq23nEQh-RU3dxb_w11fFcqTWkHwtUtWNNdn89SeW70D7RKRq9qfc2oErzr_UaAgs8JVBdpgfQG0WOo7fcqdwoq8WSMsqmhIXgNGB9cuPYfyu8_SOC1gkhIoOkICijXl5z_MCDQWGmtHpmXU9FG4ea7qTCD_Q0LM2dgXW2FNipWFvA4dW_kSu-LUXw",
+  "payload": ""
+}
+2025-02-22 14:35:39,869:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/cert/033be679e6aba6e37f909213dd189d2c0fc0 HTTP/1.1" 200 2861
+2025-02-22 14:35:39,870:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sat, 22 Feb 2025 14:35:39 GMT
+Content-Type: application/pem-certificate-chain
+Content-Length: 2861
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index", <https://acme-v02.api.letsencrypt.org/acme/cert/033be679e6aba6e37f909213dd189d2c0fc0/1>;rel="alternate"
+Replay-Nonce: bmVxADwsrzhejsd66hSL03R3dSJ-5ASaHIMKl9tUCAsDD7IcaaY
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+-----BEGIN CERTIFICATE-----
+MIIDjTCCAxOgAwIBAgISAzvmeearpuN/kJIT3RidLA/AMAoGCCqGSM49BAMDMDIx
+CzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQDEwJF
+NTAeFw0yNTAyMjIxMzM3MDhaFw0yNTA1MjMxMzM3MDdaMCIxIDAeBgNVBAMTF21h
+bmFnZW1lbnQudmF4ZWxhaXJlLmZyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE
+6rFTDIh8CbBHA7Jtjjejb2S1klo0gwvz2Eht9+iEmHc1/AJEJQj93OTxVmsQ+Xke
+ZjxbKYa4iTbQAcyvMhhU1KOCAhcwggITMA4GA1UdDwEB/wQEAwIHgDAdBgNVHSUE
+FjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQU
+Eh85oMlGfdWEpmhLj+4nq6fRdUswHwYDVR0jBBgwFoAUnytfzzwhT50Et+0rLMTG
+cIvS1w0wVQYIKwYBBQUHAQEESTBHMCEGCCsGAQUFBzABhhVodHRwOi8vZTUuby5s
+ZW5jci5vcmcwIgYIKwYBBQUHMAKGFmh0dHA6Ly9lNS5pLmxlbmNyLm9yZy8wIgYD
+VR0RBBswGYIXbWFuYWdlbWVudC52YXhlbGFpcmUuZnIwEwYDVR0gBAwwCjAIBgZn
+gQwBAgEwggECBgorBgEEAdZ5AgQCBIHzBIHwAO4AdQCi4wrkRe+9rZt+OO1HZ3dT
+14JbhJTXK14bLMS5UKRH5wAAAZUuFdfGAAAEAwBGMEQCICMJfsIrwAISDOIhQIL6
+UYlaOUNdeGVrkX7mTPxvWmWTAiBEVwI+cXFaKKj2DqnuwDhecSJu6XL27wnIiA3S
+89xWSgB1AE51oydcmhDDOFts1N8/Uusd8OCOG41pwLH6ZLFimjnfAAABlS4V170A
+AAQDAEYwRAIgERhXxSVdza7uY8TbQzJRoW0N9i+vFy6yuyKbEF93vucCIHMcyGNp
+ShvUk3oY1uoZCf9giYV9+oySHe83nO/9Td+nMAoGCCqGSM49BAMDA2gAMGUCMDVI
+tadIjnhhIuGmgOgUStLnGAT1wefJfpHN7fqzExOfLKY+/Qmh8kTCrjUwbqK3SAIx
+APkk56TvhwE7nY3vgqbdMkdfvDah0AFhgI8/FXuAvp9Ds1rH9AeV0cSN02QvieIA
+6g==
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+MIIEVzCCAj+gAwIBAgIRAIOPbGPOsTmMYgZigxXJ/d4wDQYJKoZIhvcNAQELBQAw
+TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh
+cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjQwMzEzMDAwMDAw
+WhcNMjcwMzEyMjM1OTU5WjAyMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3Mg
+RW5jcnlwdDELMAkGA1UEAxMCRTUwdjAQBgcqhkjOPQIBBgUrgQQAIgNiAAQNCzqK
+a2GOtu/cX1jnxkJFVKtj9mZhSAouWXW0gQI3ULc/FnncmOyhKJdyIBwsz9V8UiBO
+VHhbhBRrwJCuhezAUUE8Wod/Bk3U/mDR+mwt4X2VEIiiCFQPmRpM5uoKrNijgfgw
+gfUwDgYDVR0PAQH/BAQDAgGGMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcD
+ATASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdDgQWBBSfK1/PPCFPnQS37SssxMZw
+i9LXDTAfBgNVHSMEGDAWgBR5tFnme7bl5AFzgAiIyBpY9umbbjAyBggrBgEFBQcB
+AQQmMCQwIgYIKwYBBQUHMAKGFmh0dHA6Ly94MS5pLmxlbmNyLm9yZy8wEwYDVR0g
+BAwwCjAIBgZngQwBAgEwJwYDVR0fBCAwHjAcoBqgGIYWaHR0cDovL3gxLmMubGVu
+Y3Iub3JnLzANBgkqhkiG9w0BAQsFAAOCAgEAH3KdNEVCQdqk0LKyuNImTKdRJY1C
+2uw2SJajuhqkyGPY8C+zzsufZ+mgnhnq1A2KVQOSykOEnUbx1cy637rBAihx97r+
+bcwbZM6sTDIaEriR/PLk6LKs9Be0uoVxgOKDcpG9svD33J+G9Lcfv1K9luDmSTgG
+6XNFIN5vfI5gs/lMPyojEMdIzK9blcl2/1vKxO8WGCcjvsQ1nJ/Pwt8LQZBfOFyV
+XP8ubAp/au3dc4EKWG9MO5zcx1qT9+NXRGdVWxGvmBFRAajciMfXME1ZuGmk3/GO
+koAM7ZkjZmleyokP1LGzmfJcUd9s7eeu1/9/eg5XlXd/55GtYjAM+C4DG5i7eaNq
+cm2F+yxYIPt6cbbtYVNJCGfHWqHEQ4FYStUyFnv8sjyqU8ypgZaNJ9aVcWSICLOI
+E1/Qv/7oKsnZCWJ926wU6RqG1OYPGOi1zuABhLw61cuPVDT28nQS/e6z95cJXq0e
+K1BcaJ6fJZsmbjRgD5p3mvEf5vdQM7MCEvU0tHbsx2I5mHHJoABHb8KVBgWp/lcX
+GWiWaeOyB7RP+OfDtvi2OsapxXiV7vNVs7fMlrRjY1joKaqmmycnBvAq14AEbtyL
+sVfOS66B8apkeFX2NY4XPEYV4ZSCe8VHPrdrERk2wILG3T/EGmSIkCYVUMSnjmJd
+VQD9F6Na/+zmXCc=
+-----END CERTIFICATE-----
+
+2025-02-22 14:35:39,870:DEBUG:acme.client:Storing nonce: bmVxADwsrzhejsd66hSL03R3dSJ-5ASaHIMKl9tUCAsDD7IcaaY
+2025-02-22 14:35:39,872:DEBUG:certbot._internal.storage:Writing new private key to /etc/letsencrypt/archive/management.vaxelaire.fr/privkey4.pem.
+2025-02-22 14:35:39,872:DEBUG:certbot._internal.storage:Writing certificate to /etc/letsencrypt/archive/management.vaxelaire.fr/cert4.pem.
+2025-02-22 14:35:39,872:DEBUG:certbot._internal.storage:Writing chain to /etc/letsencrypt/archive/management.vaxelaire.fr/chain4.pem.
+2025-02-22 14:35:39,872:DEBUG:certbot._internal.storage:Writing full chain to /etc/letsencrypt/archive/management.vaxelaire.fr/fullchain4.pem.
+2025-02-22 14:35:39,880:DEBUG:certbot.configuration:Var account=b674a225a17192af95a621d2ec1bc036 (set by user).
+2025-02-22 14:35:39,880:DEBUG:certbot.configuration:Var pref_challs=['http-01'] (set by user).
+2025-02-22 14:35:39,880:DEBUG:certbot._internal.plugins.selection:Requested authenticator webroot and installer None
+2025-02-22 14:35:39,881:DEBUG:certbot._internal.plugins.selection:Requested authenticator webroot and installer None
+2025-02-22 14:35:39,881:DEBUG:certbot.configuration:Var webroot_path=['/var/www/certbot'] (set by user).
+2025-02-22 14:35:39,881:DEBUG:certbot.configuration:Var webroot_path=['/var/www/certbot'] (set by user).
+2025-02-22 14:35:39,881:DEBUG:certbot.configuration:Var webroot_map={'webroot_path'} (set by user).
+2025-02-22 14:35:39,881:DEBUG:certbot._internal.storage:Writing new config /etc/letsencrypt/renewal/management.vaxelaire.fr.conf.new.
+2025-02-22 14:35:39,884:DEBUG:certbot._internal.display.obj:Notifying user: 
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/management.vaxelaire.fr/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/management.vaxelaire.fr/privkey.pem
+This certificate expires on 2025-05-23.
+These files will be updated when the certificate renews.
+2025-02-22 14:35:39,884:DEBUG:certbot._internal.display.obj:Notifying user: NEXT STEPS:
+2025-02-22 14:35:39,884:DEBUG:certbot._internal.display.obj:Notifying user: - The certificate will need to be renewed before it expires. Certbot can automatically renew the certificate in the background, but you may need to take steps to enable that functionality. See https://certbot.org/renewal-setup for instructions.
+2025-02-22 14:35:39,885:DEBUG:certbot._internal.display.obj:Notifying user: If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le

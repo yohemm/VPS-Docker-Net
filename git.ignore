@@ -1,0 +1,17 @@
+**/*secrets*/
+**/*secret*/
+Reverse-Proxy/data/**/
+Reverse-Proxy/logs/**/
+Pro/**/
+Projets/**/
+Monitoring/**/data/**
+Monitoring/**/data/*
+Monitoring/**/conf/**
+Monitoring/**/conf/*
+Mail/data/**
+Mail/data/*
+Gitea/data/**
+Gitea/data/*
+AI/data/**
+AI/data/*
+banner

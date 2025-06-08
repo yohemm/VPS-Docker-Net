@@ -1,0 +1,9 @@
+2025-02-22 12:38:24,610:DEBUG:certbot._internal.main:certbot version: 2.10.0
+2025-02-22 12:38:24,610:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2025-02-22 12:38:24,610:DEBUG:certbot._internal.main:Arguments: ['--cert-name', 'adminer.minepiece.fr', '--force-renewal']
+2025-02-22 12:38:24,611:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2025-02-22 12:38:24,628:DEBUG:certbot._internal.log:Root logging level set at 30
+2025-02-22 12:38:24,629:DEBUG:certbot._internal.display.obj:Notifying user: Processing /etc/letsencrypt/renewal/adminer.minepiece.fr.conf
+2025-02-22 12:38:24,630:DEBUG:certbot._internal.plugins.selection:Requested authenticator None and installer None
+2025-02-22 12:38:24,639:DEBUG:certbot._internal.renewal:Auto-renewal forced with --force-renewal...
+2025-02-22 12:38:24,639:INFO:certbot._internal.renewal:Non-interactive renewal: random delay of 356.29458467798054 seconds

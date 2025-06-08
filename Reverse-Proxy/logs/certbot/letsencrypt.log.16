@@ -1,0 +1,709 @@
+2025-06-08 09:47:46,347:DEBUG:certbot._internal.main:certbot version: 2.10.0
+2025-06-08 09:47:46,347:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2025-06-08 09:47:46,347:DEBUG:certbot._internal.main:Arguments: ['-v', '--webroot', '--agree-tos', '--renew-by-default', '--preferred-challenges', 'http-01', '--email', 'vaxelaire.yohem@gmail.com', '--webroot-path', '/var/www/certbot', '--cert-name', 'gites-hautes-vosges.fr', '-d', 'gites-hautes-vosges.fr', '-d', 'www.gites-hautes-vosges.fr']
+2025-06-08 09:47:46,347:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2025-06-08 09:47:46,402:DEBUG:certbot._internal.log:Root logging level set at 20
+2025-06-08 09:47:46,403:DEBUG:certbot._internal.plugins.selection:Requested authenticator webroot and installer None
+2025-06-08 09:47:46,403:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * webroot
+Description: Saves the necessary validation files to a .well-known/acme-challenge/ directory within the nominated webroot path. A seperate HTTP server must be running and serving files from the webroot path. HTTP challenge only (wildcards not supported).
+Interfaces: Authenticator, Plugin
+Entry point: EntryPoint(name='webroot', value='certbot._internal.plugins.webroot:Authenticator', group='certbot.plugins')
+Initialized: <certbot._internal.plugins.webroot.Authenticator object at 0x7f9e9aebcec0>
+Prep: True
+2025-06-08 09:47:46,403:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot._internal.plugins.webroot.Authenticator object at 0x7f9e9aebcec0> and installer None
+2025-06-08 09:47:46,403:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator webroot, Installer None
+2025-06-08 09:47:46,450:DEBUG:certbot._internal.main:Picked account: <Account(RegistrationResource(body=Registration(key=None, contact=(), agreement=None, status=None, terms_of_service_agreed=None, only_return_existing=None, external_account_binding=None), uri='https://acme-v02.api.letsencrypt.org/acme/acct/2243553505', new_authzr_uri=None, terms_of_service=None), b674a225a17192af95a621d2ec1bc036, Meta(creation_dt=datetime.datetime(2025, 2, 22, 10, 55, 38, tzinfo=<UTC>), creation_host='faa0276bdd8e', register_to_eff=None))>
+2025-06-08 09:47:46,451:DEBUG:acme.client:Sending GET request to https://acme-v02.api.letsencrypt.org/directory.
+2025-06-08 09:47:46,453:DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): acme-v02.api.letsencrypt.org:443
+2025-06-08 09:47:46,845:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "GET /directory HTTP/1.1" 200 1012
+2025-06-08 09:47:46,846:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:46 GMT
+Content-Type: application/json
+Content-Length: 1012
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "cPwGt3W4Z4k": "https://community.letsencrypt.org/t/adding-random-entries-to-the-directory/33417",
+  "keyChange": "https://acme-v02.api.letsencrypt.org/acme/key-change",
+  "meta": {
+    "caaIdentities": [
+      "letsencrypt.org"
+    ],
+    "profiles": {
+      "classic": "https://letsencrypt.org/docs/profiles#classic",
+      "shortlived": "https://letsencrypt.org/docs/profiles#shortlived (not yet generally available)",
+      "tlsserver": "https://letsencrypt.org/docs/profiles#tlsserver"
+    },
+    "termsOfService": "https://letsencrypt.org/documents/LE-SA-v1.5-February-24-2025.pdf",
+    "website": "https://letsencrypt.org"
+  },
+  "newAccount": "https://acme-v02.api.letsencrypt.org/acme/new-acct",
+  "newNonce": "https://acme-v02.api.letsencrypt.org/acme/new-nonce",
+  "newOrder": "https://acme-v02.api.letsencrypt.org/acme/new-order",
+  "renewalInfo": "https://acme-v02.api.letsencrypt.org/draft-ietf-acme-ari-03/renewalInfo",
+  "revokeCert": "https://acme-v02.api.letsencrypt.org/acme/revoke-cert"
+}
+2025-06-08 09:47:46,851:DEBUG:certbot._internal.renewal:Auto-renewal forced with --force-renewal...
+2025-06-08 09:47:46,852:DEBUG:certbot._internal.display.obj:Notifying user: Renewing an existing certificate for gites-hautes-vosges.fr and www.gites-hautes-vosges.fr
+2025-06-08 09:47:46,854:DEBUG:acme.client:Requesting fresh nonce
+2025-06-08 09:47:46,854:DEBUG:acme.client:Sending HEAD request to https://acme-v02.api.letsencrypt.org/acme/new-nonce.
+2025-06-08 09:47:46,984:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "HEAD /acme/new-nonce HTTP/1.1" 200 0
+2025-06-08 09:47:46,985:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:46 GMT
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: OLgRx92jq6xUSrFCur0kZM2UKI-HAnC7JGML2s2aUb--aKZORvc
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+
+2025-06-08 09:47:46,985:DEBUG:acme.client:Storing nonce: OLgRx92jq6xUSrFCur0kZM2UKI-HAnC7JGML2s2aUb--aKZORvc
+2025-06-08 09:47:46,986:DEBUG:acme.client:JWS payload:
+b'{\n  "identifiers": [\n    {\n      "type": "dns",\n      "value": "gites-hautes-vosges.fr"\n    },\n    {\n      "type": "dns",\n      "value": "www.gites-hautes-vosges.fr"\n    }\n  ]\n}'
+2025-06-08 09:47:46,988:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/new-order:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJPTGdSeDkyanE2eFVTckZDdXIwa1pNMlVLSS1IQW5DN0pHTUwyczJhVWItLWFLWk9SdmMiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL25ldy1vcmRlciJ9",
+  "signature": "CpiIVEZCT86YKj6goiw-FEA8JgHFJHQCbDskG7bg8y_l5scp5DUlGx19Un53fNI2DyZqUSHx6RhSxEwzwET_unUTl1OsAAHm9lNs3zVjD00fEsZ8TiSaCM6_bRtxNhtbf4n7wfirwmDtB6doLAvKgMW9cN7uzpp82gGG2z-Qf7z9M5LTl2EXAG_f1OUmBKABxgsz2Q-EMIZO7kUeeG-s9y8-0j34QHazaXK-FSIkBUE4XkeX7WvdOiAn_0ormQVc2fe6_FhDDnereYtkE3dpGC760j3YgTjeqJtdJWHczFpqEeps5uxM6MjnJVfqgi4SulPrjuwV85UBMActpBNk7A",
+  "payload": "ewogICJpZGVudGlmaWVycyI6IFsKICAgIHsKICAgICAgInR5cGUiOiAiZG5zIiwKICAgICAgInZhbHVlIjogImdpdGVzLWhhdXRlcy12b3NnZXMuZnIiCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJkbnMiLAogICAgICAidmFsdWUiOiAid3d3LmdpdGVzLWhhdXRlcy12b3NnZXMuZnIiCiAgICB9CiAgXQp9"
+}
+2025-06-08 09:47:47,278:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/new-order HTTP/1.1" 201 513
+2025-06-08 09:47:47,278:DEBUG:acme.client:Received response:
+HTTP 201
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:47 GMT
+Content-Type: application/json
+Content-Length: 513
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Location: https://acme-v02.api.letsencrypt.org/acme/order/2243553505/392548428492
+Replay-Nonce: OLgRx92jVUYQDz7hMG30jc0CEugx9JWNQkhUNxUyzUx5yhZOeN8
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "status": "pending",
+  "expires": "2025-06-15T09:47:47Z",
+  "identifiers": [
+    {
+      "type": "dns",
+      "value": "gites-hautes-vosges.fr"
+    },
+    {
+      "type": "dns",
+      "value": "www.gites-hautes-vosges.fr"
+    }
+  ],
+  "authorizations": [
+    "https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902272",
+    "https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902372"
+  ],
+  "finalize": "https://acme-v02.api.letsencrypt.org/acme/finalize/2243553505/392548428492"
+}
+2025-06-08 09:47:47,278:DEBUG:acme.client:Storing nonce: OLgRx92jVUYQDz7hMG30jc0CEugx9JWNQkhUNxUyzUx5yhZOeN8
+2025-06-08 09:47:47,279:DEBUG:acme.client:JWS payload:
+b''
+2025-06-08 09:47:47,280:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902272:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJPTGdSeDkyalZVWVFEejdoTUczMGpjMENFdWd4OUpXTlFraFVOeFV5elV4NXloWk9lTjgiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LzIyNDM1NTM1MDUvNTMyNzg3OTAyMjcyIn0",
+  "signature": "UgOQncbYRXEL8XMWXhVGwzgc2AQpZCff9qGsPlS-rn5p-jECHCC-inpAT1GYJ_H-EjlYG3T5d3aPofjyqelIHSIh5S_NdAj5oh4TIMeAl0dSLYRSKOQ6tsui5bCDPHByP1w1tKcJ7XJ6F1rmdEqOqYW4QPmUKhTbaQ0EbeOT0QPBahFnZFfFz89DUi1PWn6qIwtw2Zqlr8zkhBQ68CtfJSujVhueaCeTxeretPKHuYyBPq_3liGmONA3vx8POLWiU01s0ZsHJ6_t5FdIDk_T2ED2LjI3hMCTFGKUwoLsm-Xsppqsg8XomqR0nUID8uEN1Ajwiu4pD_sHaky84-PHHg",
+  "payload": ""
+}
+2025-06-08 09:47:47,415:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz/2243553505/532787902272 HTTP/1.1" 200 830
+2025-06-08 09:47:47,415:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:47 GMT
+Content-Type: application/json
+Content-Length: 830
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: fvgmYp28J0H1W-ErscHT7regzKtaSwBhDQJwbSvk4oK64QTqnMM
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "gites-hautes-vosges.fr"
+  },
+  "status": "pending",
+  "expires": "2025-06-15T09:47:47Z",
+  "challenges": [
+    {
+      "type": "tls-alpn-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902272/zjr8eQ",
+      "status": "pending",
+      "token": "sd04J9NfUlA64yq9zsnOkx2pbbwqzpXwYLT35CJSHsY"
+    },
+    {
+      "type": "http-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902272/7ALxkQ",
+      "status": "pending",
+      "token": "sd04J9NfUlA64yq9zsnOkx2pbbwqzpXwYLT35CJSHsY"
+    },
+    {
+      "type": "dns-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902272/d6i86w",
+      "status": "pending",
+      "token": "sd04J9NfUlA64yq9zsnOkx2pbbwqzpXwYLT35CJSHsY"
+    }
+  ]
+}
+2025-06-08 09:47:47,420:DEBUG:acme.client:Storing nonce: fvgmYp28J0H1W-ErscHT7regzKtaSwBhDQJwbSvk4oK64QTqnMM
+2025-06-08 09:47:47,420:DEBUG:acme.client:JWS payload:
+b''
+2025-06-08 09:47:47,422:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902372:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJmdmdtWXAyOEowSDFXLUVyc2NIVDdyZWd6S3RhU3dCaERRSndiU3ZrNG9LNjRRVHFuTU0iLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LzIyNDM1NTM1MDUvNTMyNzg3OTAyMzcyIn0",
+  "signature": "pr8nrKejmrt91I4y55vYYNI1vNSOsKdwmxTtxfYO7t_ojP3neBgFUu9H1cu9ZcU8iw3XNOLaC_4GFIAGOTvUDKErgPO381_yXFRc_ZCRkKn8v2U1eOpvPQ49k1QdQesl6C9kam-xaLWc72NAXp6EOrtj8hBJgrW0DrYeX59SE2zwuY4FvYKNZs-Bz_qSMJC93P6Yoz2OphpRpmC3eAWvB9SoKnnsuTcJDxofigMjQ45rLI3IdjJXvczGgaipBryM3ULxQLBOreWVlgWT2udcgPhsc7idUD0eArCnZG42q5YXaakn71Q7j-mjUwKJ83OtR3DBeCIk5LTwbOeIVkKc1w",
+  "payload": ""
+}
+2025-06-08 09:47:47,556:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz/2243553505/532787902372 HTTP/1.1" 200 834
+2025-06-08 09:47:47,557:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:47 GMT
+Content-Type: application/json
+Content-Length: 834
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: OLgRx92jS9_MAE6DJpbpV7aY3PQ1ThVZ4gwwSj0GQvXhdqa0l5Y
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "www.gites-hautes-vosges.fr"
+  },
+  "status": "pending",
+  "expires": "2025-06-15T09:47:47Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902372/NprZrQ",
+      "status": "pending",
+      "token": "NBcds0i5F9yg5IZq-DjmUQoLjMq2A62B8UhSeD_GPuk"
+    },
+    {
+      "type": "tls-alpn-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902372/6sL3RA",
+      "status": "pending",
+      "token": "NBcds0i5F9yg5IZq-DjmUQoLjMq2A62B8UhSeD_GPuk"
+    },
+    {
+      "type": "dns-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902372/-hO5mw",
+      "status": "pending",
+      "token": "NBcds0i5F9yg5IZq-DjmUQoLjMq2A62B8UhSeD_GPuk"
+    }
+  ]
+}
+2025-06-08 09:47:47,557:DEBUG:acme.client:Storing nonce: OLgRx92jS9_MAE6DJpbpV7aY3PQ1ThVZ4gwwSj0GQvXhdqa0l5Y
+2025-06-08 09:47:47,558:INFO:certbot._internal.auth_handler:Performing the following challenges:
+2025-06-08 09:47:47,558:INFO:certbot._internal.auth_handler:http-01 challenge for gites-hautes-vosges.fr
+2025-06-08 09:47:47,558:INFO:certbot._internal.auth_handler:http-01 challenge for www.gites-hautes-vosges.fr
+2025-06-08 09:47:47,558:INFO:certbot._internal.plugins.webroot:Using the webroot path /var/www/certbot for all unmatched domains.
+2025-06-08 09:47:47,558:DEBUG:certbot._internal.plugins.webroot:Creating root challenges validation dir at /var/www/certbot/.well-known/acme-challenge
+2025-06-08 09:47:47,559:DEBUG:certbot._internal.plugins.webroot:Creating root challenges validation dir at /var/www/certbot/.well-known/acme-challenge
+2025-06-08 09:47:47,560:DEBUG:certbot._internal.plugins.webroot:Attempting to save validation to /var/www/certbot/.well-known/acme-challenge/sd04J9NfUlA64yq9zsnOkx2pbbwqzpXwYLT35CJSHsY
+2025-06-08 09:47:47,560:DEBUG:certbot._internal.plugins.webroot:Attempting to save validation to /var/www/certbot/.well-known/acme-challenge/NBcds0i5F9yg5IZq-DjmUQoLjMq2A62B8UhSeD_GPuk
+2025-06-08 09:47:47,561:DEBUG:acme.client:JWS payload:
+b'{}'
+2025-06-08 09:47:47,562:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902272/7ALxkQ:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJPTGdSeDkyalM5X01BRTZESnBicFY3YVkzUFExVGhWWjRnd3dTajBHUXZYaGRxYTBsNVkiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2NoYWxsLzIyNDM1NTM1MDUvNTMyNzg3OTAyMjcyLzdBTHhrUSJ9",
+  "signature": "I5pvftLl0CoADGXEsvEv38Bjcdx9x8acvZEUAScvc5bL4z0UM1PWTzKNb0nHtyvFS_7WZhvLfiOkyNGKxD8w-GdNLXrGl24_rRgQCWksIYEg_xhz-NImOFnIQXXHyC1EeVxnBTaY2pyuK8JyIFRLJ-VqKDyeSdq661UsImngKcAggzlJtSTZyuanvULRNP-QKTx9Aytt6zhebWXdIJo47pvhjW6DZc4TCbU39s3mgyblJbVBUqyScGBE_7gfsdeTCM36FRc_EH97p--4TTpIcPk5ZntNIFbGScJlvlAb6_Ou9IykLKeSDkA2psScsNop7Rp2VxwsotgK0tSKFEM89g",
+  "payload": "e30"
+}
+2025-06-08 09:47:47,698:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/chall/2243553505/532787902272/7ALxkQ HTTP/1.1" 200 195
+2025-06-08 09:47:47,698:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:47 GMT
+Content-Type: application/json
+Content-Length: 195
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index", <https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902272>;rel="up"
+Location: https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902272/7ALxkQ
+Replay-Nonce: fvgmYp28JpUnOQzgPttpvxKJ1qkGErUzWOYQP5A-L4_ooij539E
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "type": "http-01",
+  "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902272/7ALxkQ",
+  "status": "pending",
+  "token": "sd04J9NfUlA64yq9zsnOkx2pbbwqzpXwYLT35CJSHsY"
+}
+2025-06-08 09:47:47,698:DEBUG:acme.client:Storing nonce: fvgmYp28JpUnOQzgPttpvxKJ1qkGErUzWOYQP5A-L4_ooij539E
+2025-06-08 09:47:47,699:DEBUG:acme.client:JWS payload:
+b'{}'
+2025-06-08 09:47:47,700:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902372/NprZrQ:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJmdmdtWXAyOEpwVW5PUXpnUHR0cHZ4S0oxcWtHRXJVeldPWVFQNUEtTDRfb29pajUzOUUiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2NoYWxsLzIyNDM1NTM1MDUvNTMyNzg3OTAyMzcyL05wclpyUSJ9",
+  "signature": "gD5YaThXJJ7kWA00R-Ujmmea70hhzYf_uU5cbDzTsS7G-ocVWDGEI8xanMA80zOAAEbFz7rE3VDSalbO7BR44NkZO_5LyZiJk9osS2Zvy0t8jVd3sJ5IGMaIOf1zq8Gfb0q-PuFgB8tOPXHxUHIBs6A54jCmIageVStR6BfI0zuyXnEnT8xQ3om8ptkJqmJNkLw345rOi2RGuD4sWIJSx_S_8ZJdrIVI02JXGNgC5tOn3Y5sO3vXpyrRSiV4eOlu-iazYGBtGWn9OsLbilt4h_qE6x_ar62EfY25Z--risVP6eisSsnu-KGHTBYPXNla8nn1w7NETRzBjUTePMRCXQ",
+  "payload": "e30"
+}
+2025-06-08 09:47:47,837:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/chall/2243553505/532787902372/NprZrQ HTTP/1.1" 200 195
+2025-06-08 09:47:47,838:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:47 GMT
+Content-Type: application/json
+Content-Length: 195
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index", <https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902372>;rel="up"
+Location: https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902372/NprZrQ
+Replay-Nonce: OLgRx92jpCKeEoxv0ze1FfsWPRqlVtqUolt4J_B7KUnfcOhFoDc
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "type": "http-01",
+  "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902372/NprZrQ",
+  "status": "pending",
+  "token": "NBcds0i5F9yg5IZq-DjmUQoLjMq2A62B8UhSeD_GPuk"
+}
+2025-06-08 09:47:47,838:DEBUG:acme.client:Storing nonce: OLgRx92jpCKeEoxv0ze1FfsWPRqlVtqUolt4J_B7KUnfcOhFoDc
+2025-06-08 09:47:47,838:INFO:certbot._internal.auth_handler:Waiting for verification...
+2025-06-08 09:47:48,839:DEBUG:acme.client:JWS payload:
+b''
+2025-06-08 09:47:48,840:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902272:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJPTGdSeDkyanBDS2VFb3h2MHplMUZmc1dQUnFsVnRxVW9sdDRKX0I3S1VuZmNPaEZvRGMiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LzIyNDM1NTM1MDUvNTMyNzg3OTAyMjcyIn0",
+  "signature": "VCOR4Eg0svKcKAgfsm05OnogvgoEWSiVWOM6IoYV1XMkl34Pi-9-m3GM5eX07x2pzG9cprcKYUC0Lv4_9OQXPc1jXSnhLXxdffdc7zlAA9W9PzjF6CEqiQeYQjPd3b3_eliHSBftMioNjgRGQ5bl2bDCssUq0aq0ev1bXR91K8XbqrPt2EaBAR8-d6EqLcaRpD1OQNh-6UpYhioOfuwotgCizARN_zTlqChBFyOhP238c3c_WsDefag97XkKvuGSQEEwues8ajCujGG7FT5gYQA0ykCiKoMMyRgny7-cWFySyO370NDARTuA5FH1e6hPKYO5StE6YBIOceihljm2fA",
+  "payload": ""
+}
+2025-06-08 09:47:48,976:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz/2243553505/532787902272 HTTP/1.1" 200 830
+2025-06-08 09:47:48,976:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:48 GMT
+Content-Type: application/json
+Content-Length: 830
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: fvgmYp281z7BT1RN0dkU5iUgHNq1evfleN3ErmfYoLE-LpEciwA
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "gites-hautes-vosges.fr"
+  },
+  "status": "pending",
+  "expires": "2025-06-15T09:47:47Z",
+  "challenges": [
+    {
+      "type": "dns-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902272/d6i86w",
+      "status": "pending",
+      "token": "sd04J9NfUlA64yq9zsnOkx2pbbwqzpXwYLT35CJSHsY"
+    },
+    {
+      "type": "tls-alpn-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902272/zjr8eQ",
+      "status": "pending",
+      "token": "sd04J9NfUlA64yq9zsnOkx2pbbwqzpXwYLT35CJSHsY"
+    },
+    {
+      "type": "http-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902272/7ALxkQ",
+      "status": "pending",
+      "token": "sd04J9NfUlA64yq9zsnOkx2pbbwqzpXwYLT35CJSHsY"
+    }
+  ]
+}
+2025-06-08 09:47:48,976:DEBUG:acme.client:Storing nonce: fvgmYp281z7BT1RN0dkU5iUgHNq1evfleN3ErmfYoLE-LpEciwA
+2025-06-08 09:47:48,977:DEBUG:acme.client:JWS payload:
+b''
+2025-06-08 09:47:48,978:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902372:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJmdmdtWXAyODF6N0JUMVJOMGRrVTVpVWdITnExZXZmbGVOM0VybWZZb0xFLUxwRWNpd0EiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LzIyNDM1NTM1MDUvNTMyNzg3OTAyMzcyIn0",
+  "signature": "mrMVvZdtPjWJpHWaCxAoCOuVLh-bauwtSb7RWysAGRl-mCnaBwJu3wvCz60WJ2REYDB1FxBkif_JVFwfl6P6T56hT5kr_zao-EkFidsEuMUmT_QvQpxo2MyzTjgaXp3uVkdZMG5xXM2yOHmCLA3nXZ67_5i-lYtmjd2eScAcaRngswY1B-nR_oJKkHG-CT1JJHAdz1zF-p5iOZwanVcM9-luuMQXDR0B7zINN9ZwAmqNPHC04IHqEf99XUib68Jqb9VvhAfZjxLO_rH49ATNc3CRM7UrYFSo7ip1CruQIrp7qQ_jLVvLqTd8z8ddcgW3sAiLqXGqz0WCXETcFiCp2Q",
+  "payload": ""
+}
+2025-06-08 09:47:49,114:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz/2243553505/532787902372 HTTP/1.1" 200 834
+2025-06-08 09:47:49,115:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:49 GMT
+Content-Type: application/json
+Content-Length: 834
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: OLgRx92j-8gDKWwG0uqp6mGXY8zzfwZzVlICD9YmHBhKRi1aHgs
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "www.gites-hautes-vosges.fr"
+  },
+  "status": "pending",
+  "expires": "2025-06-15T09:47:47Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902372/NprZrQ",
+      "status": "pending",
+      "token": "NBcds0i5F9yg5IZq-DjmUQoLjMq2A62B8UhSeD_GPuk"
+    },
+    {
+      "type": "dns-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902372/-hO5mw",
+      "status": "pending",
+      "token": "NBcds0i5F9yg5IZq-DjmUQoLjMq2A62B8UhSeD_GPuk"
+    },
+    {
+      "type": "tls-alpn-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902372/6sL3RA",
+      "status": "pending",
+      "token": "NBcds0i5F9yg5IZq-DjmUQoLjMq2A62B8UhSeD_GPuk"
+    }
+  ]
+}
+2025-06-08 09:47:49,115:DEBUG:acme.client:Storing nonce: OLgRx92j-8gDKWwG0uqp6mGXY8zzfwZzVlICD9YmHBhKRi1aHgs
+2025-06-08 09:47:52,115:DEBUG:acme.client:JWS payload:
+b''
+2025-06-08 09:47:52,117:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902272:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJPTGdSeDkyai04Z0RLV3dHMHVxcDZtR1hZOHp6ZndaelZsSUNEOVltSEJoS1JpMWFIZ3MiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LzIyNDM1NTM1MDUvNTMyNzg3OTAyMjcyIn0",
+  "signature": "MtM8cO6N5wgy-SiGillNU4di3d--ipRV0SHc8qr4c5LmsfOT2Wy_UjGH3pKo9YyEviPxNW0vmfpHfdryN-QnNTGVE-ZsOCPh9qGqVP7D-9i_oISlcq4FkpR3hG44km-1TnMeh7rHhxAGC9JO5Us52zf1LjpzGILKJEb-E0G2HcMRJlcoc90-vVm8eTHQ-w3DlzOMhdf0IUaC_QQOHnKy06A3a6-3aZbOrXSXHIInxjLVzj-Xlcr26_bIkBTfjFoKNsZGj8bIhqWOLbIRvyRD-88tKebq6tToJcIO49eDHvdm0N0Qepz-xrZoZuNg4VU67hMEPPl6ts6ySReQJtPlKg",
+  "payload": ""
+}
+2025-06-08 09:47:52,250:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz/2243553505/532787902272 HTTP/1.1" 200 1197
+2025-06-08 09:47:52,251:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:52 GMT
+Content-Type: application/json
+Content-Length: 1197
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: fvgmYp28rMRxZSgaKL-HYxWnEg05eVcR5dxVVDAXrHSQHFAn6cA
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "gites-hautes-vosges.fr"
+  },
+  "status": "valid",
+  "expires": "2025-07-08T09:47:51Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902272/7ALxkQ",
+      "status": "valid",
+      "validated": "2025-06-08T09:47:47Z",
+      "token": "sd04J9NfUlA64yq9zsnOkx2pbbwqzpXwYLT35CJSHsY",
+      "validationRecord": [
+        {
+          "url": "http://gites-hautes-vosges.fr/.well-known/acme-challenge/sd04J9NfUlA64yq9zsnOkx2pbbwqzpXwYLT35CJSHsY",
+          "hostname": "gites-hautes-vosges.fr",
+          "port": "80",
+          "addressesResolved": [
+            "91.108.113.88",
+            "2a02:4780:28:d15a::1"
+          ],
+          "addressUsed": "2a02:4780:28:d15a::1"
+        },
+        {
+          "url": "http://gites-hautes-vosges.fr/.well-known/acme-challenge/sd04J9NfUlA64yq9zsnOkx2pbbwqzpXwYLT35CJSHsY",
+          "hostname": "gites-hautes-vosges.fr",
+          "port": "80",
+          "addressesResolved": [
+            "91.108.113.88",
+            "2a02:4780:28:d15a::1"
+          ],
+          "addressUsed": "91.108.113.88"
+        }
+      ]
+    }
+  ]
+}
+2025-06-08 09:47:52,251:DEBUG:acme.client:Storing nonce: fvgmYp28rMRxZSgaKL-HYxWnEg05eVcR5dxVVDAXrHSQHFAn6cA
+2025-06-08 09:47:52,251:DEBUG:acme.client:JWS payload:
+b''
+2025-06-08 09:47:52,253:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902372:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJmdmdtWXAyOHJNUnhaU2dhS0wtSFl4V25FZzA1ZVZjUjVkeFZWREFYckhTUUhGQW42Y0EiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2F1dGh6LzIyNDM1NTM1MDUvNTMyNzg3OTAyMzcyIn0",
+  "signature": "Ejr6LNQtlN-6F9VsJi7nTG0lUjEXiuG6XWTo2ANUPWHCPFAz6FKP1VOuH449f7E3HyDtDXbmG79BaJhysNVCOC-VcWvH-BQz7-xsaSdhnQxiPOWojHjq0-Y4uW7RT-s8CYBuL_SrZ7QcTQsgnPopFQpxXsw3Os12AouXdhiXxDEpgu3YCB-Fz5AiNC8d7L7Cjp9CHg3JoWgD8prgJg7Y9-yJBBPoAToYzfAQE_uqH1VDntj7bfSDYSihetedpgMYkwL4MCGyw60o2e3rwBvctUOx_UNlocQqKrbFspfoIAOkrccGtNZERqYV294-E0SqdLIOF7JvWMtuJ0JGYq3rTQ",
+  "payload": ""
+}
+2025-06-08 09:47:52,385:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/authz/2243553505/532787902372 HTTP/1.1" 200 1217
+2025-06-08 09:47:52,386:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:52 GMT
+Content-Type: application/json
+Content-Length: 1217
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: fvgmYp28g-izdA6e5kMPw4bqDEZNQ08xQ0p2KGOBHi-qG1lOPSs
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "identifier": {
+    "type": "dns",
+    "value": "www.gites-hautes-vosges.fr"
+  },
+  "status": "valid",
+  "expires": "2025-07-08T09:47:51Z",
+  "challenges": [
+    {
+      "type": "http-01",
+      "url": "https://acme-v02.api.letsencrypt.org/acme/chall/2243553505/532787902372/NprZrQ",
+      "status": "valid",
+      "validated": "2025-06-08T09:47:47Z",
+      "token": "NBcds0i5F9yg5IZq-DjmUQoLjMq2A62B8UhSeD_GPuk",
+      "validationRecord": [
+        {
+          "url": "http://www.gites-hautes-vosges.fr/.well-known/acme-challenge/NBcds0i5F9yg5IZq-DjmUQoLjMq2A62B8UhSeD_GPuk",
+          "hostname": "www.gites-hautes-vosges.fr",
+          "port": "80",
+          "addressesResolved": [
+            "91.108.113.88",
+            "2a02:4780:28:d15a::1"
+          ],
+          "addressUsed": "2a02:4780:28:d15a::1"
+        },
+        {
+          "url": "http://www.gites-hautes-vosges.fr/.well-known/acme-challenge/NBcds0i5F9yg5IZq-DjmUQoLjMq2A62B8UhSeD_GPuk",
+          "hostname": "www.gites-hautes-vosges.fr",
+          "port": "80",
+          "addressesResolved": [
+            "91.108.113.88",
+            "2a02:4780:28:d15a::1"
+          ],
+          "addressUsed": "91.108.113.88"
+        }
+      ]
+    }
+  ]
+}
+2025-06-08 09:47:52,386:DEBUG:acme.client:Storing nonce: fvgmYp28g-izdA6e5kMPw4bqDEZNQ08xQ0p2KGOBHi-qG1lOPSs
+2025-06-08 09:47:52,386:DEBUG:certbot._internal.error_handler:Calling registered functions
+2025-06-08 09:47:52,386:INFO:certbot._internal.auth_handler:Cleaning up challenges
+2025-06-08 09:47:52,387:DEBUG:certbot._internal.plugins.webroot:Removing /var/www/certbot/.well-known/acme-challenge/sd04J9NfUlA64yq9zsnOkx2pbbwqzpXwYLT35CJSHsY
+2025-06-08 09:47:52,387:DEBUG:certbot._internal.plugins.webroot:Removing /var/www/certbot/.well-known/acme-challenge/NBcds0i5F9yg5IZq-DjmUQoLjMq2A62B8UhSeD_GPuk
+2025-06-08 09:47:52,387:DEBUG:certbot._internal.plugins.webroot:All challenges cleaned up
+2025-06-08 09:47:52,387:DEBUG:certbot._internal.client:CSR: CSR(file=None, data=b'-----BEGIN CERTIFICATE REQUEST-----\nMIIBCzCBsgIBADAAMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAELMIYuD8H3zmS\n4ap/P7QSxkAuSemFaZWp7PEl9zGMCC2YGgV5JOKZorSEBEk3nswistwAGReM0a7u\ny2DHC5Td+KBQME4GCSqGSIb3DQEJDjFBMD8wPQYDVR0RBDYwNIIWZ2l0ZXMtaGF1\ndGVzLXZvc2dlcy5mcoIad3d3LmdpdGVzLWhhdXRlcy12b3NnZXMuZnIwCgYIKoZI\nzj0EAwIDSAAwRQIhAKwJ5OllGLB6SJhQakPDRkN3uZ1MWqhA+yik4WHK6xKmAiBs\nic0RaP4Lf7EaIbcQYGC7tnwHOi6KlNSxeop+unSUag==\n-----END CERTIFICATE REQUEST-----\n', form='pem')
+2025-06-08 09:47:52,388:DEBUG:certbot._internal.client:Will poll for certificate issuance until 2025-06-08 09:49:22.388141
+2025-06-08 09:47:52,388:DEBUG:acme.client:JWS payload:
+b'{\n  "csr": "MIIBCzCBsgIBADAAMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAELMIYuD8H3zmS4ap_P7QSxkAuSemFaZWp7PEl9zGMCC2YGgV5JOKZorSEBEk3nswistwAGReM0a7uy2DHC5Td-KBQME4GCSqGSIb3DQEJDjFBMD8wPQYDVR0RBDYwNIIWZ2l0ZXMtaGF1dGVzLXZvc2dlcy5mcoIad3d3LmdpdGVzLWhhdXRlcy12b3NnZXMuZnIwCgYIKoZIzj0EAwIDSAAwRQIhAKwJ5OllGLB6SJhQakPDRkN3uZ1MWqhA-yik4WHK6xKmAiBsic0RaP4Lf7EaIbcQYGC7tnwHOi6KlNSxeop-unSUag"\n}'
+2025-06-08 09:47:52,390:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/finalize/2243553505/392548428492:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJmdmdtWXAyOGctaXpkQTZlNWtNUHc0YnFERVpOUTA4eFEwcDJLR09CSGktcUcxbE9QU3MiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2ZpbmFsaXplLzIyNDM1NTM1MDUvMzkyNTQ4NDI4NDkyIn0",
+  "signature": "ioStA7XR5n_5E9urTu93CDiYEB2V9cwb-EmnhRkp1ZsaYLNEoeTeF8CXVZeDeQO-4yjxBKqRvFmwMjWzmKSyUKRhN8xEl8Bjw4tltiFQ9sJE0xDeLTD8Ej2h6SjZGgpTPpgwOi6BY1diznmtZA_sl_jY5ZD3p-yt5UcPX_k0TpEkZrRqLUUHIpsu6txZn7nNwsFke57xzzOScB4pvcgJ-ClMhbb8JE3dld7zFIdoriW199iNaLGTaMKE3ghvj5CH31vtrWyzJJkwLZixuLXDXJgGUVmDJhHYEwezMPM9Un2CGcwx0fy7j3VJNIesIsWSE_3QbE1TXdA1bqx4JAfhUw",
+  "payload": "ewogICJjc3IiOiAiTUlJQkN6Q0JzZ0lCQURBQU1Ga3dFd1lIS29aSXpqMENBUVlJS29aSXpqMERBUWNEUWdBRUxNSVl1RDhIM3ptUzRhcF9QN1FTeGtBdVNlbUZhWldwN1BFbDl6R01DQzJZR2dWNUpPS1pvclNFQkVrM25zd2lzdHdBR1JlTTBhN3V5MkRIQzVUZC1LQlFNRTRHQ1NxR1NJYjNEUUVKRGpGQk1EOHdQUVlEVlIwUkJEWXdOSUlXWjJsMFpYTXRhR0YxZEdWekxYWnZjMmRsY3k1bWNvSWFkM2QzTG1kcGRHVnpMV2hoZFhSbGN5MTJiM05uWlhNdVpuSXdDZ1lJS29aSXpqMEVBd0lEU0FBd1JRSWhBS3dKNU9sbEdMQjZTSmhRYWtQRFJrTjN1WjFNV3FoQS15aWs0V0hLNnhLbUFpQnNpYzBSYVA0TGY3RWFJYmNRWUdDN3Rud0hPaTZLbE5TeGVvcC11blNVYWciCn0"
+}
+2025-06-08 09:47:53,166:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/finalize/2243553505/392548428492 HTTP/1.1" 200 615
+2025-06-08 09:47:53,166:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:53 GMT
+Content-Type: application/json
+Content-Length: 615
+Connection: keep-alive
+Boulder-Requester: 2243553505
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Location: https://acme-v02.api.letsencrypt.org/acme/order/2243553505/392548428492
+Replay-Nonce: OLgRx92jhbC0W_x4Npyyi-VnDLNz_f3672uek1w4kWwNViet6qk
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "status": "valid",
+  "expires": "2025-06-15T09:47:47Z",
+  "identifiers": [
+    {
+      "type": "dns",
+      "value": "gites-hautes-vosges.fr"
+    },
+    {
+      "type": "dns",
+      "value": "www.gites-hautes-vosges.fr"
+    }
+  ],
+  "authorizations": [
+    "https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902272",
+    "https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902372"
+  ],
+  "finalize": "https://acme-v02.api.letsencrypt.org/acme/finalize/2243553505/392548428492",
+  "certificate": "https://acme-v02.api.letsencrypt.org/acme/cert/05d6141c3a47d83ee7293e8396e8a0964635"
+}
+2025-06-08 09:47:53,167:DEBUG:acme.client:Storing nonce: OLgRx92jhbC0W_x4Npyyi-VnDLNz_f3672uek1w4kWwNViet6qk
+2025-06-08 09:47:54,167:DEBUG:acme.client:JWS payload:
+b''
+2025-06-08 09:47:54,169:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/order/2243553505/392548428492:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJPTGdSeDkyamhiQzBXX3g0TnB5eWktVm5ETE56X2YzNjcydWVrMXc0a1d3TlZpZXQ2cWsiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL29yZGVyLzIyNDM1NTM1MDUvMzkyNTQ4NDI4NDkyIn0",
+  "signature": "k0gGa28xFOJIMDF6K1rt9h30HbOahYEGD6hFbk3rIoMEeneGo9ex479HNoN_cLGK27-lxWN3X6N9JsYgQSNFq7b3cTximrWKVOrf-xmD3t5mDDvcWfdmlQ_K5UE9yEAGjk1RN4hZEzgpy9079M3IKN08ex6RGStP0Nz9fBv9mxsCwrSnVIOBFHUSNz4YjS73c2R7PYkwAmmeWGT0Ct2OvxWLoSioQfxl-LKQQw84UUI4pbbGra53T9scMTenNMvZtzzY5PMV8_x_sh5Xm4z0MNebgI404f3y5yoiB3pqLz7drXX8PZqHr4qhkwhA4_vR33Ru-nHL1lTAhmg14MVFqQ",
+  "payload": ""
+}
+2025-06-08 09:47:54,303:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/order/2243553505/392548428492 HTTP/1.1" 200 615
+2025-06-08 09:47:54,304:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:54 GMT
+Content-Type: application/json
+Content-Length: 615
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Location: https://acme-v02.api.letsencrypt.org/acme/order/2243553505/392548428492
+Replay-Nonce: OLgRx92jKNApT4tye3U46lyRMBlitTAzhr-78q3q6UoXSWd9_vA
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "status": "valid",
+  "expires": "2025-06-15T09:47:47Z",
+  "identifiers": [
+    {
+      "type": "dns",
+      "value": "gites-hautes-vosges.fr"
+    },
+    {
+      "type": "dns",
+      "value": "www.gites-hautes-vosges.fr"
+    }
+  ],
+  "authorizations": [
+    "https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902272",
+    "https://acme-v02.api.letsencrypt.org/acme/authz/2243553505/532787902372"
+  ],
+  "finalize": "https://acme-v02.api.letsencrypt.org/acme/finalize/2243553505/392548428492",
+  "certificate": "https://acme-v02.api.letsencrypt.org/acme/cert/05d6141c3a47d83ee7293e8396e8a0964635"
+}
+2025-06-08 09:47:54,304:DEBUG:acme.client:Storing nonce: OLgRx92jKNApT4tye3U46lyRMBlitTAzhr-78q3q6UoXSWd9_vA
+2025-06-08 09:47:54,305:DEBUG:acme.client:JWS payload:
+b''
+2025-06-08 09:47:54,306:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/cert/05d6141c3a47d83ee7293e8396e8a0964635:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAia2lkIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2FjY3QvMjI0MzU1MzUwNSIsICJub25jZSI6ICJPTGdSeDkyaktOQXBUNHR5ZTNVNDZseVJNQmxpdFRBemhyLTc4cTNxNlVvWFNXZDlfdkEiLCAidXJsIjogImh0dHBzOi8vYWNtZS12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL2NlcnQvMDVkNjE0MWMzYTQ3ZDgzZWU3MjkzZTgzOTZlOGEwOTY0NjM1In0",
+  "signature": "B5Wto-EmtvdF-xdoM6InZ-V1VUF-cM_TIUmLPw14_yr8WZqZ3Z1Il9aGJ_qxsCUvOyRIsRW_u1sFHQQmTVCdxyzoQZBIS4_-SPb427YTQ6d99KwVRGOSQgqk7bayZgslc1OcCm3hWIoqGEcEAznDvA8fopqbqzxHFZfkR4xdaChPnDfwGgYGdMxflXhqcq_i2ZyNruyTobVVc3tdFvGgGiJEHtRNCJzIwyokBaMXzpSlGqEIUxo5RLJlH9nn3zH_MSe92SKYjQ7TgxToxfu8g0n6_m2sgSt5gz1DejKM4CNyKeToV-BC6wV9Oj_YrkEe4HJzQ7pHg8IUtJDzc-oMVw",
+  "payload": ""
+}
+2025-06-08 09:47:54,441:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/cert/05d6141c3a47d83ee7293e8396e8a0964635 HTTP/1.1" 200 2913
+2025-06-08 09:47:54,442:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Sun, 08 Jun 2025 09:47:54 GMT
+Content-Type: application/pem-certificate-chain
+Content-Length: 2913
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index", <https://acme-v02.api.letsencrypt.org/acme/cert/05d6141c3a47d83ee7293e8396e8a0964635/1>;rel="alternate"
+Replay-Nonce: fvgmYp287xVafmvsMkyezXzZ62_S9tVNk2hHBzmaPZWMpBq8VkU
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+-----BEGIN CERTIFICATE-----
+MIIDtDCCAzugAwIBAgISBdYUHDpH2D7nKT6DluiglkY1MAoGCCqGSM49BAMDMDIx
+CzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQDEwJF
+NTAeFw0yNTA2MDgwODQ5MjJaFw0yNTA5MDYwODQ5MjFaMCExHzAdBgNVBAMTFmdp
+dGVzLWhhdXRlcy12b3NnZXMuZnIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQs
+whi4PwffOZLhqn8/tBLGQC5J6YVplans8SX3MYwILZgaBXkk4pmitIQESTeezCKy
+3AAZF4zRru7LYMcLlN34o4ICQDCCAjwwDgYDVR0PAQH/BAQDAgeAMB0GA1UdJQQW
+MBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBTy
+r7hjl549TiQ8iGZLslIqeGYKOzAfBgNVHSMEGDAWgBSfK1/PPCFPnQS37SssxMZw
+i9LXDTAyBggrBgEFBQcBAQQmMCQwIgYIKwYBBQUHMAKGFmh0dHA6Ly9lNS5pLmxl
+bmNyLm9yZy8wPQYDVR0RBDYwNIIWZ2l0ZXMtaGF1dGVzLXZvc2dlcy5mcoIad3d3
+LmdpdGVzLWhhdXRlcy12b3NnZXMuZnIwEwYDVR0gBAwwCjAIBgZngQwBAgEwLQYD
+VR0fBCYwJDAioCCgHoYcaHR0cDovL2U1LmMubGVuY3Iub3JnLzU0LmNybDCCAQQG
+CisGAQQB1nkCBAIEgfUEgfIA8AB1AO08S9boBsKkogBX28sk4jgB31Ev7cSGxXAP
+IN23Pj/gAAABl07wfDQAAAQDAEYwRAIgMt8cSVccWqJ5m2iy8fKBFitmdBZlsofS
+L8SZmAQAC2QCIDYtTJbvPIsUHb7kmSVSmmpgj38s9p9H/C3+S8Tinm5HAHcADeHy
+MCvTDcFAYhIJ6lUu/Ed0fLHX6TDvDkIetH5OqjQAAAGXTvB8QQAABAMASDBGAiEA
+9m6SEIJRAseRInpsNJCiHIYDkH9YfkJ+oHsWHedrh7wCIQDRhOvGJqTHtn6AnC/+
+Qn25K0b52xuETOjs1T/RVsybBzAKBggqhkjOPQQDAwNnADBkAjBCuIh07QL3fN1e
+TSqacl04/jclQio8wF70ota26jRiBX4aWZVCKh+v5Rsf0d+G3zUCMAERbSrbdcHU
+uG4VPeGrdVlUABuWt94iYpQN/DxCzbbdzNTidNThb20CGNmFHZt5WQ==
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+MIIEVzCCAj+gAwIBAgIRAIOPbGPOsTmMYgZigxXJ/d4wDQYJKoZIhvcNAQELBQAw
+TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh
+cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjQwMzEzMDAwMDAw
+WhcNMjcwMzEyMjM1OTU5WjAyMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3Mg
+RW5jcnlwdDELMAkGA1UEAxMCRTUwdjAQBgcqhkjOPQIBBgUrgQQAIgNiAAQNCzqK
+a2GOtu/cX1jnxkJFVKtj9mZhSAouWXW0gQI3ULc/FnncmOyhKJdyIBwsz9V8UiBO
+VHhbhBRrwJCuhezAUUE8Wod/Bk3U/mDR+mwt4X2VEIiiCFQPmRpM5uoKrNijgfgw
+gfUwDgYDVR0PAQH/BAQDAgGGMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcD
+ATASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdDgQWBBSfK1/PPCFPnQS37SssxMZw
+i9LXDTAfBgNVHSMEGDAWgBR5tFnme7bl5AFzgAiIyBpY9umbbjAyBggrBgEFBQcB
+AQQmMCQwIgYIKwYBBQUHMAKGFmh0dHA6Ly94MS5pLmxlbmNyLm9yZy8wEwYDVR0g
+BAwwCjAIBgZngQwBAgEwJwYDVR0fBCAwHjAcoBqgGIYWaHR0cDovL3gxLmMubGVu
+Y3Iub3JnLzANBgkqhkiG9w0BAQsFAAOCAgEAH3KdNEVCQdqk0LKyuNImTKdRJY1C
+2uw2SJajuhqkyGPY8C+zzsufZ+mgnhnq1A2KVQOSykOEnUbx1cy637rBAihx97r+
+bcwbZM6sTDIaEriR/PLk6LKs9Be0uoVxgOKDcpG9svD33J+G9Lcfv1K9luDmSTgG
+6XNFIN5vfI5gs/lMPyojEMdIzK9blcl2/1vKxO8WGCcjvsQ1nJ/Pwt8LQZBfOFyV
+XP8ubAp/au3dc4EKWG9MO5zcx1qT9+NXRGdVWxGvmBFRAajciMfXME1ZuGmk3/GO
+koAM7ZkjZmleyokP1LGzmfJcUd9s7eeu1/9/eg5XlXd/55GtYjAM+C4DG5i7eaNq
+cm2F+yxYIPt6cbbtYVNJCGfHWqHEQ4FYStUyFnv8sjyqU8ypgZaNJ9aVcWSICLOI
+E1/Qv/7oKsnZCWJ926wU6RqG1OYPGOi1zuABhLw61cuPVDT28nQS/e6z95cJXq0e
+K1BcaJ6fJZsmbjRgD5p3mvEf5vdQM7MCEvU0tHbsx2I5mHHJoABHb8KVBgWp/lcX
+GWiWaeOyB7RP+OfDtvi2OsapxXiV7vNVs7fMlrRjY1joKaqmmycnBvAq14AEbtyL
+sVfOS66B8apkeFX2NY4XPEYV4ZSCe8VHPrdrERk2wILG3T/EGmSIkCYVUMSnjmJd
+VQD9F6Na/+zmXCc=
+-----END CERTIFICATE-----
+
+2025-06-08 09:47:54,442:DEBUG:acme.client:Storing nonce: fvgmYp287xVafmvsMkyezXzZ62_S9tVNk2hHBzmaPZWMpBq8VkU
+2025-06-08 09:47:54,444:DEBUG:certbot._internal.storage:Writing new private key to /etc/letsencrypt/archive/gites-hautes-vosges.fr/privkey18.pem.
+2025-06-08 09:47:54,444:DEBUG:certbot._internal.storage:Writing certificate to /etc/letsencrypt/archive/gites-hautes-vosges.fr/cert18.pem.
+2025-06-08 09:47:54,445:DEBUG:certbot._internal.storage:Writing chain to /etc/letsencrypt/archive/gites-hautes-vosges.fr/chain18.pem.
+2025-06-08 09:47:54,445:DEBUG:certbot._internal.storage:Writing full chain to /etc/letsencrypt/archive/gites-hautes-vosges.fr/fullchain18.pem.
+2025-06-08 09:47:54,451:DEBUG:certbot.configuration:Var account=b674a225a17192af95a621d2ec1bc036 (set by user).
+2025-06-08 09:47:54,451:DEBUG:certbot.configuration:Var pref_challs=['http-01'] (set by user).
+2025-06-08 09:47:54,452:DEBUG:certbot._internal.plugins.selection:Requested authenticator webroot and installer None
+2025-06-08 09:47:54,452:DEBUG:certbot._internal.plugins.selection:Requested authenticator webroot and installer None
+2025-06-08 09:47:54,452:DEBUG:certbot.configuration:Var webroot_path=['/var/www/certbot'] (set by user).
+2025-06-08 09:47:54,452:DEBUG:certbot.configuration:Var webroot_map={'gites-hautes-vosges.fr': '/var/www/certbot', 'www.gites-hautes-vosges.fr': '/var/www/certbot'} (set by user).
+2025-06-08 09:47:54,452:DEBUG:certbot._internal.storage:Writing new config /etc/letsencrypt/renewal/gites-hautes-vosges.fr.conf.new.
+2025-06-08 09:47:54,455:DEBUG:certbot._internal.storage:Deleting /etc/letsencrypt/archive/gites-hautes-vosges.fr/cert12.pem and related items during clean up
+2025-06-08 09:47:54,456:DEBUG:certbot._internal.display.obj:Notifying user: 
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/gites-hautes-vosges.fr/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/gites-hautes-vosges.fr/privkey.pem
+This certificate expires on 2025-09-06.
+These files will be updated when the certificate renews.
+2025-06-08 09:47:54,456:DEBUG:certbot._internal.display.obj:Notifying user: NEXT STEPS:
+2025-06-08 09:47:54,457:DEBUG:certbot._internal.display.obj:Notifying user: - The certificate will need to be renewed before it expires. Certbot can automatically renew the certificate in the background, but you may need to take steps to enable that functionality. See https://certbot.org/renewal-setup for instructions.
+2025-06-08 09:47:54,457:DEBUG:certbot._internal.display.obj:Notifying user: If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
